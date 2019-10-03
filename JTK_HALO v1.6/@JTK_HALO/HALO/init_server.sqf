@@ -127,8 +127,3 @@ if (count _air > 0) then {
 };
 						
 if (!isDedicated) then {execVM "JTK\HALO\init_client.sqf"};
-
-
-
-
-
