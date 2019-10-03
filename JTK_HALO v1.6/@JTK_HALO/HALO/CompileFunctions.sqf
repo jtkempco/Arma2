@@ -133,10 +133,3 @@ JTK_Capture_GetAddActn = Compile PreprocessFile (JTK_HALO_Path+"scripts\Addactio
 
 JTK_HALO_Funcs_Compiled = true;
 if (_Debug) then {HintSilent "All Scripts Compiled"};
-
-
-
-
-
-
-
