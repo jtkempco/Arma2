@@ -47,5 +47,3 @@ While {true} do {
 	};
 	WaitUntil {!(JTK_Aircraft_ReadyToBoard) AND (_aircraft getVariable "JTK_HALO_Takeoff")};
 };
-
-
