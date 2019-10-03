@@ -1,0 +1,528 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, JTK_HALO_AI">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,250,606.058899,-507.312347,696.058899,-457.312256,0.000000,"start"};
+item1[] = {"__landed",4,218,672.000671,230.047791,748.614502,266.661438,0.000000,"!landed"};
+item2[] = {"Freefall_Start",2,250,606.979309,-327.487305,696.979309,-277.487335,0.000000,"Freefall" \n "Start"};
+item3[] = {"Chute_Delay",2,250,608.104004,182.318008,688.368652,211.630325,0.000000,"Chute Delay"};
+item4[] = {"Freefall_Delay",2,250,888.273804,-320.963379,968.538513,-291.651123,0.000000,"Freefall Delay"};
+item5[] = {"Ready_F",4,218,757.078674,-391.883636,833.692505,-355.269836,0.000000,"Ready F"};
+item6[] = {"above_alt",4,218,606.085510,-424.973083,696.085510,-374.972992,0.000000,"above alt"};
+item7[] = {"_z____alt",4,218,758.565857,-241.504883,835.179688,-204.891083,0.000000,"_z > _alt"};
+item8[] = {"height_____alt",4,218,607.880798,-237.897568,697.880798,-187.897568,10.000000,"height <= _alt"};
+item9[] = {"create_Chute",2,250,607.624084,-168.136475,697.624084,-118.136467,0.000000,"create Chute"};
+item10[] = {"Chute_Created",4,218,611.159180,-104.504478,701.159180,-54.504478,0.000000,"Chute Created"};
+item11[] = {"Chute_Setup",2,250,611.857422,-31.923035,701.857422,18.076973,0.000000,"Chute Setup"};
+item12[] = {"Unit_in_Chute",4,218,608.960510,43.854111,698.960510,93.854073,0.000000,"Unit in Chute"};
+item13[] = {"Chute_Steer",2,4346,609.649780,305.318878,699.649780,355.318787,0.000000,"Chute Steer"};
+item14[] = {"Landed",4,218,610.744629,393.056732,700.744751,443.056793,10.000000,"Landed"};
+item15[] = {"DONE",1,250,610.169861,473.140839,700.169861,523.140869,0.000000,"DONE"};
+item16[] = {"Ready_C",4,218,549.564331,230.648529,626.178162,267.262299,0.000000,"Ready C"};
+item17[] = {"Respawn_Check__",2,250,608.480896,104.948761,698.480896,154.948761,0.000000,"" \n "Respawn Check" \n "" \n ""};
+item18[] = {"_unit_killed_",4,218,488.609314,106.376083,578.609314,156.376083,0.000000,"" \n "_unit killed" \n ""};
+item19[] = {"___unit_killed_",4,218,737.576477,103.427979,827.576477,153.427979,0.000000,"" \n "!_unit_killed" \n ""};
+item20[] = {"",7,210,778.655090,323.148682,786.655090,331.148682,0.000000,""};
+item21[] = {"clean_up_AND_Red",2,250,373.059326,104.187012,463.059326,154.187012,0.000000,"clean up" \n "AND" \n "Redefine"};
+item22[] = {"_unit_in_chute",4,218,246.848175,104.616257,336.848175,154.616257,0.000000,"_unit in chute"};
+item23[] = {"",7,210,288.311249,326.280029,296.311249,334.280029,0.000000,""};
+link0[] = {0,6};
+link1[] = {1,3};
+link2[] = {2,7};
+link3[] = {2,8};
+link4[] = {3,16};
+link5[] = {4,5};
+link6[] = {5,2};
+link7[] = {6,2};
+link8[] = {7,4};
+link9[] = {8,9};
+link10[] = {9,10};
+link11[] = {10,11};
+link12[] = {11,12};
+link13[] = {12,17};
+link14[] = {13,1};
+link15[] = {13,14};
+link16[] = {14,15};
+link17[] = {16,13};
+link18[] = {17,18};
+link19[] = {17,19};
+link20[] = {18,21};
+link21[] = {19,20};
+link22[] = {20,13};
+link23[] = {21,22};
+link24[] = {22,23};
+link25[] = {23,13};
+globals[] = {0.000000,0,0,0,0,640,480,1,419,6316128,1,-256.290314,1465.452148,577.689941,-529.863770,1368,880,1};
+window[] = {2,-1,-1,-32000,-32000,1096,180,1389,180,3,1390};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "JTK_HALO_AI";
+  class States
+  {
+    /*%FSM<STATE "start">*/
+    class start
+    {
+      name = "start";
+      init = /*%FSM<STATEINIT""">*/"//by Kempco" \n
+       "_unit 			= _this select 0;" \n
+       "_index			= _this select 1;" \n
+       "_pos  			= _this select 2;" \n
+       "_pointJmpr	= _this select 3;" \n
+       "_static			= _this select 4;" \n
+       "" \n
+       "_unit_cnt 		= player getVariable ""JTK_HALO_AI_Count""; " \n
+       "_identities 		= if (JTK_AI_CanChangeID) then {(_unit getVariable ""JTK_Identities"")}else{nil};" \n
+       "" \n
+       "_n				= 100;" \n
+       "_wrn_alt 		= 1100;" \n
+       "_attachPosArray = JTK_HALO_AI_AttachTo_Array;" \n
+       "" \n
+       "_isWater = if (surfaceIsWater _pos) then {true}else{false};" \n
+       "_alt = if (_isWater) then {(JTK_HALO_Water_Insertion_Altitude - 150)}else{JTK_HALO_AI_DeployChuteAlt};" \n
+       "" \n
+       "_stag_array = if (_unit != _pointJmpr) then {((_unit getVariable ""JTK_AI_Formation"") select 0)}else{nil};" \n
+       "_DC_array = if (_unit != _pointJmpr) then {((_unit getVariable ""JTK_AI_Formation"") select 1)}else{nil};" \n
+       "" \n
+       "if (_unit == _pointJmpr) then {" \n
+       "	if (_isWater) then {_alt  = _alt  + 5}else{_alt  = _alt  + 10};" \n
+       "};" \n
+       "" \n
+       "_v_avg =  [_static, JTK_SP_AVG_SPEED] call JTK_GetExitSpeed;" \n
+       "_v_Exit =  [_static, JTK_SP_EXIT_SPEED] call JTK_GetExitSpeed;" \n
+       "" \n
+       "_unit setvelocity _v_Exit;" \n
+       "_unit switchmove ""halofreefall_non"";" \n
+       "" \n
+       "_chuteType = if (JTK_ACE_Detected) then {""ParachuteWest""}else{""ParachuteC""};" \n
+       "" \n
+       "" \n
+       "" \n
+       "//Spawn Helper" \n
+       "private[""_dir_helper""];" \n
+       "if (_unit == _pointJmpr) then {" \n
+       "	[_unit] spawn {" \n
+       "		_unit = _this select 0;" \n
+       "		_helper = ""Sign_sphere10cm_EP1"" createVehicle [0,0,0];" \n
+       "		WaitUntil {!isNull _helper};" \n
+       "		_unit setVariable [""JTK_HALO_AI_Chute_Helper"",_helper];" \n
+       "		hideObject _helper;" \n
+       "	};" \n
+       "}else{" \n
+       "	_dir_helper = ""Sign_sphere10cm_EP1"" createVehicle [0,0,0];" \n
+       "	hideObject _dir_helper;" \n
+       "};" \n
+       "	"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "above_alt">*/
+        class above_alt
+        {
+          priority = 0.000000;
+          to="Freefall_Start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"position _unit select 2 > JTK_HALO_AI_DeployChuteAlt"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Freefall_Start">*/
+    class Freefall_Start
+    {
+      name = "Freefall_Start";
+      init = /*%FSM<STATEINIT""">*/"JTK_AI_GetAnim = {" \n
+       "	_unit = _this select 0;" \n
+       "	_dist = _this select 1;" \n
+       "	_helper = _this select 2;" \n
+       "	" \n
+       "	if (isNull _helper) exitwith {};" \n
+       "" \n
+       "	_InFrontOf = [_unit,_helper,(_dist/2)] call bis_fnc_isInFrontOf;" \n
+       "	" \n
+       "	if ((_dist > 1.25) AND (_InFrontOf)) exitWith {""HaloFreeFall_F""};" \n
+       "	if ((_dist > 1.25) AND !(_InFrontOf)) exitWith {""HaloFreeFall_B""};" \n
+       "	if (true) exitwith {""HaloFreeFall_non""};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if (!_isWater) then {	" \n
+       "	if (_unit == _pointJmpr) then {" \n
+       "		_unit setVelocity ([_unit,player] call JTK_GetVelocity);" \n
+       "	}else{" \n
+       "		_form = if (getpos _pointJmpr select 2 > _wrn_alt) then {""STAG""}else{""DC""};" \n
+       "		_distTo = if (_form == ""STAG"") then {-(_stag_array select 0)}else{_DC_array select 0};" \n
+       "		_dirTo = if (_form == ""STAG"") then {_stag_array select 1}else{_DC_array select 1};" \n
+       "		_max = 3;" \n
+       "		_vz = [_unit,_pointJmpr] call JTK_GetROD;" \n
+       "		_vx = ((velocity _pointJmpr) select 0);" \n
+       "		_vy = ((velocity _pointJmpr) select 1);" \n
+       "		_formpos = [_pointJmpr,_distTo,_dirTo] call BIS_fnc_relPos;" \n
+       "		_dir_helper setPos _formpos;" \n
+       "		_dist = [_unit,_formpos] call BIS_fnc_distance2D;" \n
+       "		_unit playMoveNow ([_unit,_dist,_dir_helper] call JTK_AI_GetAnim);" \n
+       "		if (_dist > 0.5) then {" \n
+       "			if ((player getVariable ""JTK_HALO_Status"") != ""WAITING"") then {" \n
+       "				_dir = [_unit,_formpos] call BIS_fnc_dirTo;" \n
+       "				_speed = if ((_dist/25) < 1) then {_max*(_dist/25)}else{_max}; " \n
+       "				_vx = _vx + (sin _dir*_speed);" \n
+       "				_vy = _vy + (cos _dir*_speed);" \n
+       "			};" \n
+       "		};" \n
+       "		_unit setVelocity [_vx,_vy,-_vz];" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "height_____alt">*/
+        class height_____alt
+        {
+          priority = 10.000000;
+          to="create_Chute";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"position _unit select 2 <= _alt"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_z____alt">*/
+        class _z____alt
+        {
+          priority = 0.000000;
+          to="Freefall_Delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"position _unit select 2 > JTK_HALO_AI_DeployChuteAlt"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Chute_Delay">*/
+    class Chute_Delay
+    {
+      name = "Chute_Delay";
+      init = /*%FSM<STATEINIT""">*/"_time = time + (1/_n);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready_C">*/
+        class Ready_C
+        {
+          priority = 0.000000;
+          to="Chute_Steer";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time >= _time"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Freefall_Delay">*/
+    class Freefall_Delay
+    {
+      name = "Freefall_Delay";
+      init = /*%FSM<STATEINIT""">*/"_time = time + (1/_n);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready_F">*/
+        class Ready_F
+        {
+          priority = 0.000000;
+          to="Freefall_Start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time >= _time"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "create_Chute">*/
+    class create_Chute
+    {
+      name = "create_Chute";
+      init = /*%FSM<STATEINIT""">*/"_chute = createVehicle[_chuteType, [0,0,100],[],0,""FLY""];" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Chute_Created">*/
+        class Chute_Created
+        {
+          priority = 0.000000;
+          to="Chute_Setup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNull _chute"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Chute_Setup">*/
+    class Chute_Setup
+    {
+      name = "Chute_Setup";
+      init = /*%FSM<STATEINIT""">*/"_ROD = if (_isWater) then {55}else{45};" \n
+       "" \n
+       "_deploy_offset = if (!isNil ""_DC_array"") then {[_pointJmpr,_DC_array select 0,_DC_array select 1] call BIS_fnc_relPos}else{position _unit};	" \n
+       "_unit setPos _deploy_offset;			" \n
+       "_dir = if (_unit == _pointjmpr) then {[getPos _unit,_pos] call BIS_fnc_dirTo}else{direction _pointjmpr};" \n
+       "_avg_Chute_speed = (([_unit,_pos] call BIS_fnc_distance2D)/((_deploy_offset select 2)/_ROD));" \n
+       "_helper = _pointjmpr getVariable ""JTK_HALO_AI_Chute_Helper"";" \n
+       "" \n
+       "_chute setPos (getPos _unit);" \n
+       "_chute setVectorDirAndUp [vectorDir _unit, vectorUp _unit];	" \n
+       "_unit moveInDriver _chute;//Move n Driver For Vanilla	" \n
+       "_chute setDir _dir;" \n
+       "" \n
+       "if (_unit == _pointjmpr) then {" \n
+       "	_helper setPos [position _unit select 0,position _unit select 1,0];	" \n
+       "	_helper setDir _dir;" \n
+       "};" \n
+       "if (_unit == _pointjmpr) then {_attachPosArray set [0,[0,0,(position _unit select 2)]]};" \n
+       "" \n
+       "if (_index == (_unit_cnt - 1)) then {" \n
+       "	if ((_unit_cnt mod 2) == 0) then {" \n
+       "		_tailjmprPos = _attachPosArray select (_unit_cnt - 1);" \n
+       "		_attachPosArray set [(_unit_cnt - 1),[0,(_tailjmprPos select 1),0]];" \n
+       "	};" \n
+       "};			" \n
+       "_attachPos = _attachPosArray select _index;" \n
+       "_chute attachTo [_helper,_attachPos];" \n
+       "" \n
+       "_Landing = false;" \n
+       "" \n
+       "if (simulationEnabled _chute) then {_chute enableSimulation false};" \n
+       "" \n
+       "_n = 200;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Unit_in_Chute">*/
+        class Unit_in_Chute
+        {
+          priority = 0.000000;
+          to="Respawn_Check__";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit != vehicle _unit) AND (!isNull _chute)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Chute_Steer">*/
+    class Chute_Steer
+    {
+      name = "Chute_Steer";
+      init = /*%FSM<STATEINIT""">*/"_switchHelper = if ((getpos _pointjmpr select 2) < 25) then {true}else{false};" \n
+       "if ((_switchHelper) AND (_unit != _pointjmpr) AND (!_Landing)) then {" \n
+       "	_dir_helper setDir (direction _unit);" \n
+       "	_dir_helper setPos [position _unit select 0,position _unit select 1,0];" \n
+       "	_pos = _unit modelToWorld [0,15+(_index*5),0];" \n
+       "	_Landing = true;" \n
+       "	_attachPos = [0,0,position _unit select 2];	" \n
+       "};" \n
+       "" \n
+       "if ((_unit == _pointjmpr) AND ((getPos _unit select 2) < 2)) then {_Landing = true};" \n
+       "" \n
+       "if ((_Landing) AND (_unit != _pointjmpr)) then {" \n
+       "	private [""_x"",""_y"",""_z""];" \n
+       "	_dist = [_unit,_pos] call BIS_fnc_distance2D;" \n
+       "	if(_dist < (_dist - (_index*0.5))) then {" \n
+       "		_x = 0;" \n
+       "		_y = 0;" \n
+       "	}else{" \n
+       "		_x = (_avg_Chute_speed/_n);" \n
+       "		_y = (_avg_Chute_speed/_n);" \n
+       "	};" \n
+       "	_z = (_ROD/_n);" \n
+       "	_attachPos = [_attachPos select 0,(_attachPos select 1)+_y,(_attachPos select 2)-_z];" \n
+       "	_chute attachTo [_dir_helper,_attachPos];" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if ((getpos _unit select 2) < 2 AND _Landing) then {" \n
+       "	_chute enableSimulation true;" \n
+       "	deleteVehicle _chute;" \n
+       "	_chute hideObject true;" \n
+       "	if (_unit != _pointjmpr) then {deleteVehicle _dir_helper}else{detach _unit};" \n
+       "};" \n
+       "	" \n
+       "if ((_unit == vehicle _unit) AND (isNull _chute)) exitwith {};" \n
+       "" \n
+       "if (!_Landing) then {" \n
+       "	if (_unit == _pointjmpr) then {" \n
+       "		private [""_x"",""_y"",""_z""];" \n
+       "		_dist = [_unit,_pos] call BIS_fnc_distance2D;" \n
+       "		if(_dist < (_dist - (_index*0.5))) then {" \n
+       "			_x = 0;" \n
+       "			_y = 0;" \n
+       "			_ROD = 10;" \n
+       "		}else{" \n
+       "			_x = (_avg_Chute_speed/_n);" \n
+       "			_y = (_avg_Chute_speed/_n);" \n
+       "		};" \n
+       "		_z = (_ROD/_n);" \n
+       "		_attachPos = [_attachPos select 0,(_attachPos select 1)+_y,(_attachPos select 2)-_z];" \n
+       "		JTK_GlobalAttachNew = [0,_y,(_attachPos select 2)-_z];" \n
+       "		_chute attachTo [_helper,_attachPos];" \n
+       "	}else{" \n
+       "		if (!isNil ""JTK_GlobalAttachNew"") then {" \n
+       "			_new = JTK_GlobalAttachNew;" \n
+       "			_attachPos = [(_attachPos select 0) + (_new select 0),(_attachPos select 1)+(_new select 1),_new select 2];" \n
+       "			_chute attachTo [_helper,_attachPos];" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Landed">*/
+        class Landed
+        {
+          priority = 10.000000;
+          to="DONE";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit == vehicle _unit) AND (isNull _chute)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "__landed">*/
+        class __landed
+        {
+          priority = 0.000000;
+          to="Chute_Delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit != vehicle _unit) AND (!isNull _chute)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "DONE">*/
+    class DONE
+    {
+      name = "DONE";
+      init = /*%FSM<STATEINIT""">*/"if (_unit == _pointjmpr) then {_helper spawn {sleep 10; deleteVehicle _this}};" \n
+       "" \n
+       "if (!alive _unit) exitwith {player groupChat format[""We lost %1."",_index]};" \n
+       "" \n
+       "_isWater = if (surfaceIsWater position _unit) then {true}else{false};	" \n
+       "" \n
+       "[_unit,_isWater] spawn {" \n
+       "	_unit = _this select 0;" \n
+       "	_isWater = _this select 1;" \n
+       "	" \n
+       "	//_pos = if (_isWater) then {ATLtoASL [getposATL _unit select 0,getposATL _unit select 1,1]}else{[getposATL _unit select 0,getposATL _unit select 1,1]}; " \n
+       "	//_anim1 = ""acrgpknlmstpsnonwnondnon_amovpercmstpsnonwnondnon_getoutlow"";" \n
+       "	_anim = if (_isWater) then {""AswmPercMstpSnonWnonDnon""}else{""amovppnemstpsnonwnondnon""};" \n
+       "" \n
+       "	//_unit setPos _pos;" \n
+       "	" \n
+       "	//_unit switchMove _anim1;" \n
+       "	_unit addEventHandler [""killed"", {_this spawn JTK_AI_RestoreUnit}];" \n
+       "	//WaitUntil{((animationState _unit) != _anim1)};" \n
+       "	_unit playmoveNow _anim;" \n
+       "	_unit disableAI ""ANIM"";" \n
+       "	sleep 2;" \n
+       "	_unit setDamage 2;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Respawn_Check__">*/
+    class Respawn_Check__
+    {
+      name = "Respawn_Check__";
+      init = /*%FSM<STATEINIT""">*/"//Restore unit if killed when chute is deployed" \n
+       "" \n
+       "_new_unit = """";" \n
+       "_unit_killed = false;" \n
+       "if (!alive _unit) then {" \n
+       "	_unit_killed = true;" \n
+       "	_hasname = false;" \n
+       "	_unitname = vehicleVarName _unit;" \n
+       "	if (isNil _unitname) then {_hasname = false}else{_hasname = true};" \n
+       "	_new_unit = createVehicle[(typeOf _unit), [0,0,1000],[],0,""NONE""];" \n
+       "	if (_hasname) then {" \n
+       "		_new_unit setVehicleInit format [""%1 = this; this setVehicleVarName """"%1"""""",_unitname];" \n
+       "		processInitCommands;" \n
+       "	};" \n
+       "	_array = player getVariable ""JTK_HALO_AI_Gear"";" \n
+       "	_array set [(((player getVariable ""JTK_HALO_AI_Gear"") select 0) select _index),_new_unit];" \n
+       "	player setVariable [""JTK_HALO_AI_Gear"",_array];" \n
+       "	if (!isNil ""_identities"") then {" \n
+       "		_new_unit setVariable [""JTK_Identities"",_identities];" \n
+       "		_new_unit setIdentity (_identities select 0); " \n
+       "	};" \n
+       "	_new_unit moveInDriver _chute;" \n
+       "	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "___unit_killed_">*/
+        class ___unit_killed_
+        {
+          priority = 0.000000;
+          to="Chute_Steer";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_unit_killed)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_unit_killed_">*/
+        class _unit_killed_
+        {
+          priority = 0.000000;
+          to="clean_up_AND_Red";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_unit_killed"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "clean_up_AND_Red">*/
+    class clean_up_AND_Red
+    {
+      name = "clean_up_AND_Red";
+      init = /*%FSM<STATEINIT""">*/"deleteVehicle _unit;" \n
+       "_unit = _new_unit;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_unit_in_chute">*/
+        class _unit_in_chute
+        {
+          priority = 0.000000;
+          to="Chute_Steer";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit != vehicle _unit)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="start";
+  finalStates[] =
+  {
+    "DONE",
+  };
+};
+/*%FSM</COMPILE>*/

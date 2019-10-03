@@ -1,0 +1,999 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, JTK_HALO_Server">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,250,613.162476,-647.640442,703.162476,-597.640320,0.000000,"start"};
+item1[] = {"isserver",4,218,611.553223,-554.468689,701.553223,-504.468689,0.000000,"isserver"};
+item2[] = {"Init",2,250,610.865173,-468.611786,700.865173,-418.611786,0.000000,"Init"};
+item3[] = {"SETUP_Ready",4,218,611.102600,-373.323242,701.102600,-323.323242,0.000000,"SETUP" \n "Ready"};
+item4[] = {"Setup__Loop",2,250,611.654663,-49.817833,701.654663,0.182215,0.000000,"Setup  Loop"};
+item5[] = {"StaticSet",4,218,438.901794,-50.328091,528.901733,-0.328024,0.000000,"StaticSet"};
+item6[] = {"takeoff",4,218,-91.578430,-129.984772,-1.578411,-79.984741,0.000000,"takeoff"};
+item7[] = {"__isserver",4,218,613.116089,-727.556885,703.116089,-677.556885,0.000000,"!isserver"};
+item8[] = {"END",1,250,613.538086,-810.634644,703.538147,-760.634644,0.000000,"END"};
+item9[] = {"",7,210,961.823242,147.921036,969.823242,155.921036,0.000000,""};
+item10[] = {"Loops_",2,4346,-92.643646,-50.718765,-2.643816,-0.718704,0.000000,"Loops" \n ""};
+item11[] = {"___takeoff_",4,218,-91.568298,46.263138,-1.568352,96.263130,0.000000,"!(takeoff)"};
+item12[] = {"__StaticSet",4,218,611.562378,47.241268,701.562317,97.241333,0.000000,"!StaticSet"};
+item13[] = {"predefine_Loops",2,250,265.751404,-67.128235,356.877045,16.640497,0.000000,"predefine" \n "Loops Arrays" \n "+" \n "Spawn Pilot"};
+item14[] = {"_",8,218,83.241302,-50.732746,173.241302,-0.732684,0.000000,""};
+item15[] = {"predefine_Setup",2,250,611.868591,-289.829010,703.109558,-200.119476,0.000000,"predefine" \n "Setup Arrays" \n "" \n ""};
+item16[] = {"_",8,218,611.211975,-175.979401,701.211975,-125.979424,0.000000,""};
+item17[] = {"Reset_HALO",2,250,-282.228882,127.892090,-192.229019,177.891968,0.000000,"Reset HALO"};
+item18[] = {"cancelled",4,218,-282.966492,-51.615547,-192.966400,-1.615546,0.000000,"cancelled"};
+item19[] = {"",7,210,962.319702,-351.860443,970.319702,-343.860443,0.000000,""};
+item20[] = {"teleport_",2,250,-90.521233,-246.334946,-0.521183,-196.334976,0.000000,"teleport "};
+item21[] = {"Delete_Pilot_",2,250,445.267700,-373.942902,535.268066,-323.942780,0.000000,"Delete Pilot" \n ""};
+item22[] = {"Engines_on",4,218,-90.316010,-372.094452,-0.315958,-322.094452,0.000000,"Engines on"};
+item23[] = {"Pilot_Done",4,218,277.207458,-373.552917,367.207458,-323.552917,0.000000,"Pilot Done"};
+item24[] = {"Start_Reset",2,250,115.779907,-373.105591,205.779984,-323.105591,0.000000,"Start Reset"};
+link0[] = {0,1};
+link1[] = {0,7};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {3,15};
+link5[] = {4,5};
+link6[] = {4,12};
+link7[] = {5,13};
+link8[] = {6,20};
+link9[] = {7,8};
+link10[] = {9,19};
+link11[] = {10,6};
+link12[] = {10,11};
+link13[] = {10,18};
+link14[] = {11,10};
+link15[] = {12,4};
+link16[] = {13,14};
+link17[] = {14,10};
+link18[] = {15,16};
+link19[] = {16,4};
+link20[] = {17,9};
+link21[] = {18,17};
+link22[] = {19,3};
+link23[] = {20,22};
+link24[] = {21,3};
+link25[] = {22,24};
+link26[] = {23,21};
+link27[] = {24,23};
+globals[] = {0.000000,0,0,0,0,640,480,1,212,6316128,1,-450.643738,963.282532,141.578827,-900.510864,1194,880,1};
+window[] = {2,-1,-1,-1,-1,1015,150,1356,150,3,1216};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "JTK_HALO_Server";
+  class States
+  {
+    /*%FSM<STATE "start">*/
+    class start
+    {
+      name = "start";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__isserver">*/
+        class __isserver
+        {
+          priority = 0.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isserver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "isserver">*/
+        class isserver
+        {
+          priority = 0.000000;
+          to="Init";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isserver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/"//by Kempco" \n
+       "_aircraft 	=  _this select 0;" \n
+       "_static 		= _this select 1;" \n
+       "_side 		= _aircraft getVariable ""side"";" \n
+       "" \n
+       "_isC130 = _aircraft getVariable ""is a C130"";" \n
+       "_attachArrays = _aircraft getVariable ""attach arrays"";" \n
+       "" \n
+       "_aircraft setFuel 0;" \n
+       "" \n
+       "//Delete aircraft Driver if pressent THX VEGA!!!" \n
+       "if (!isNull driver _aircraft) then {" \n
+       "	unassignVehicle (driver _aircraft);" \n
+       "	(driver _aircraft) action [""Eject"",_aircraft];" \n
+       "	(driver _aircraft) spawn {WaitUntil {_this == vehicle _this};deleteVehicle _this};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "private [""_home"",""_m_type"",""_m_color"",""_pilot_type""];" \n
+       "" \n
+       "switch (_side) do {" \n
+       "	case west: {" \n
+       "		_home = [0,0,10000];" \n
+       "		_m_type = ""b_Plane"";" \n
+       "		_m_color = ""ColorBlue"";" \n
+       "		_pilot_type = JTK_HALO_Pilot_Type_West;" \n
+       " " \n
+       "	};" \n
+       "	case east: {" \n
+       "		_home = [0,0,9000];" \n
+       "		_m_type = ""o_Plane"";" \n
+       "		_m_color = ""ColorRed"";" \n
+       "		_pilot_type = JTK_HALO_Pilot_Type_East;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "//Lock C130 board positions" \n
+       "for ""_i"" from 0 to 26 do {_aircraft lockCargo [_i, true]};" \n
+       "_aircraft lockDriver true;" \n
+       "" \n
+       "" \n
+       "//Create HALO Marker" \n
+       "_m = createmarker[format [""JTK_Aircraft_Marker_%1"",_aircraft], getpos _aircraft];" \n
+       "_m setmarkerType _m_type;" \n
+       "_m setmarkerColor _m_color;" \n
+       "_m setmarkerSize [0.7,0.7];" \n
+       "" \n
+       "//Set GlobalVars" \n
+       "_aircraft setVariable [""JTK_HALO_DecoyMarker"",_m,true];" \n
+       "_aircraft setVariable [""JTK_HALO_STATIC"",_static,true];" \n
+       "_aircraft setVariable [""JTK_HALO_Takeoff"",false,true];" \n
+       "" \n
+       "//Set localVars" \n
+       "_aircraft setVariable [""Ready"",true];" \n
+       "_aircraft setVariable [""Static_Set"",false];" \n
+       "" \n
+       "_aircraft setVehicleInit """ \n
+       "	this addEventHandler ['GetOut',{_this call JTK_Aircraft_GetOut_EH}];" \n
+       "	if (isMultiplayer) then {this addEventHandler ['GetIn',{_this spawn JTK_Aircaft_GetIn_EH}]};" \n
+       """;" \n
+       "processInitCommands; " \n
+       "" \n
+       "_isAttached = false;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "SETUP_Ready">*/
+        class SETUP_Ready
+        {
+          priority = 0.000000;
+          to="predefine_Setup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aircraft getVariable ""Ready"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Setup__Loop">*/
+    class Setup__Loop
+    {
+      name = "Setup__Loop";
+      init = /*%FSM<STATEINIT""">*/"if (JTK_HALO_Capture) then {" \n
+       "	_dist = 1000;" \n
+       "	_nearest_units = nearestObjects [_aircraft,[""Man""],_dist];" \n
+       "	if (count _nearest_units > 0) then {" \n
+       "		_nearest_players = [];" \n
+       "		{if (isplayer _x) then {_nearest_players = _nearest_players + [_x]}} foreach _nearest_units;" \n
+       "		if (count _nearest_players > 0) then {" \n
+       "			_new = _nearest_players - _old;" \n
+       "			if (count _new > 0) then {" \n
+       "				{JTK_Spawn_PVEH = [[_x,_aircraft,_dist],JTK_Capture_GetAddActn];publicVariable ""JTK_Spawn_PVEH"";" \n
+       "				if (local _x) then {[_x,_aircraft,_dist] spawn JTK_Capture_GetAddActn}} foreach _new;" \n
+       "				_old = _old + _new;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "	if (count _old > 0) then {" \n
+       "		{if (_x distance _aircraft > 25) then {_old = _old - [_x]}} forEach _old;" \n
+       "	};" \n
+       "}else{" \n
+       "	_nearest_units = nearestObjects [_aircraft,[""Man""],25];" \n
+       "	if (count _nearest_units > 0) then {" \n
+       "		_nearest_players = [];" \n
+       "		{if (isplayer _x) then {_nearest_players = _nearest_players + [_x]}} foreach _nearest_units;" \n
+       "		if (count _nearest_players > 0) then {" \n
+       "			_command_units = [];" \n
+       "			{if (_x getVariable ""JTK_HALO_Setup_Access"") then {_command_units = _command_units + [_x]}} foreach _nearest_players; " \n
+       "			if (count _command_units > 0) then {" \n
+       "				_new = _command_units - _old;" \n
+       "				if (count _new > 0) then {" \n
+       "					{JTK_Spawn_PVEH = [[_x,_aircraft],JTK_Setup_GetAddActn];publicVariable ""JTK_Spawn_PVEH"";" \n
+       "					if (local _x) then {[_x,_aircraft] spawn JTK_Setup_GetAddActn}} foreach _new;" \n
+       "					_old = _old + _new;" \n
+       "				};	" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "	if (count _old > 0) then {" \n
+       "		{if (_x distance _aircraft > 25) then {_old = _old - [_x]}} forEach _old;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__StaticSet">*/
+        class __StaticSet
+        {
+          priority = 0.000000;
+          to="Setup__Loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_aircraft getVariable ""Static_Set"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "StaticSet">*/
+        class StaticSet
+        {
+          priority = 0.000000;
+          to="predefine_Loops";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aircraft getVariable ""Static_Set"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END">*/
+    class END
+    {
+      name = "END";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Loops_">*/
+    class Loops_
+    {
+      name = "Loops_";
+      init = /*%FSM<STATEINIT""">*/"//_commandunit defined HERE" \n
+       "" \n
+       "//====Reset Loop======//	" \n
+       "_nearest_units = nearestObjects [_aircraft,[""Man""],25];" \n
+       "if ((count _nearest_units > 0) AND (!isNil ""_commandUnit"")) then {" \n
+       "	_nearest_players = [];" \n
+       "	{if (isplayer _x) then {_nearest_players = _nearest_players + [_x]}} foreach _nearest_units;" \n
+       "	if (count _nearest_players > 0) then {" \n
+       "		_AtBoardPos = [];" \n
+       "		_new_1 = _nearest_players - _old_1;" \n
+       "		if (count _new_1 > 0) then {" \n
+       "			{JTK_Spawn_PVEH = [[_x,_aircraft],JTK_Reset_GetAddActn];publicVariable ""JTK_Spawn_PVEH"";" \n
+       "			if (local _x) then {[_x,_aircraft] spawn JTK_Reset_GetAddActn}} foreach _new_1;" \n
+       "			_old_1 = _old_1 + _new_1;" \n
+       "		};	" \n
+       "	};" \n
+       "};	" \n
+       "if (count _old_1 > 0) then {" \n
+       "	{if ((_x distance _aircraft > 25) OR (_x in _aircraft) OR (_x distance _BoardPos <= 4.25)) then {_old_1 = _old_1 - [_x]}} forEach _old_1;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "//====Get In Loop======//" \n
+       "_nearest_units = nearestObjects [_BoardPos,[""Man""],4.25];" \n
+       "if (count _nearest_units > 0) then {" \n
+       "	_nearest_players = [];" \n
+       "	{if (isplayer _x) then {_nearest_players = _nearest_players + [_x]}} foreach _nearest_units;" \n
+       "	if (count _nearest_players > 0) then {" \n
+       "		_AtBoardPos = [];" \n
+       "		{if (_x distance _BoardPos <= 4.25) then {_AtBoardPos = _AtBoardPos + [_x]}} foreach _nearest_players; " \n
+       "		if (count _AtBoardPos > 0) then {" \n
+       "			_new_2 = _AtBoardPos - _old_2;" \n
+       "			if (count _new_2 > 0) then {" \n
+       "				{JTK_Spawn_PVEH = [[_x,_aircraft,_boardPos,_vehDrop],JTK_GetIn_GetAddActn];publicVariable ""JTK_Spawn_PVEH"";" \n
+       "				if (local _x) then {[_x,_aircraft,_boardPos,_vehDrop] spawn JTK_GetIn_GetAddActn}} foreach _new_2;" \n
+       "				_old_2 = _old_2 + _new_2;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "if (count _old_2 > 0) then {" \n
+       "	{if ((_x distance _BoardPos > 4.25) OR (_x in _aircraft) OR (count crew _aircraft > 15)) then {_old_2 = _old_2 - [_x]}} forEach _old_2;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "//====Takeoff Loop======//			" \n
+       "_crew = crew _aircraft;" \n
+       "if (count _crew > 0) then {" \n
+       "	_players_in_crew = [];" \n
+       "	{if (isplayer _x) then {_players_in_crew = _players_in_crew + [_x]}} foreach _crew;" \n
+       "	if (count _players_in_crew > 0) then {" \n
+       "		_new_3 = _players_in_crew - _old_3;" \n
+       "		if (count _new_3 > 0) then {" \n
+       "			{JTK_Spawn_PVEH = [[_x,_aircraft],JTK_TakeOff_GetAddActn];publicVariable ""JTK_Spawn_PVEH"";" \n
+       "			if (local _x) then {[_x,_aircraft] spawn JTK_TakeOff_GetAddActn}} foreach _new_3;" \n
+       "			_old_3 = _old_3 + _new_3;" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "if (count _old_3 > 0) then {" \n
+       "	{if !(_x in _aircraft) then {_old_3 = _old_3 - [_x]}} forEach _old_3;" \n
+       "};" \n
+       "" \n
+       "_commandUnit = _aircraft getVariable ""JTK_HALO_Command_Unit"";" \n
+       "if (!isNil ""_commandUnit"") then {" \n
+       "	if (!alive _commandunit) then {" \n
+       "		_aircraft setVariable [""JTK_HALO_Command_Unit"",nil,true];" \n
+       "		_commandUnit setVariable [""JTK_HALO_Command_Unit"",nil,true];" \n
+       "	};" \n
+       "	_commandUnit = _aircraft getVariable ""JTK_HALO_Command_Unit"";" \n
+       "	if (isNil ""_commandUnit"") then {" \n
+       "		if (count (crew _aircraft) > 0) then {" \n
+       "			_players = [];" \n
+       "			{if ((isplayer _x) AND (alive _x)) then {_players = _players + [_x]}} foreach (crew _aircraft);" \n
+       "			if (count _players == 0) then {_aircraft setVariable [""JTK_HALO_Cancelled"",true,true]};" \n
+       "		}else{_aircraft setVariable [""JTK_HALO_Cancelled"",true,true]};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_t = time + 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "___takeoff_">*/
+        class ___takeoff_
+        {
+          priority = 0.000000;
+          to="Loops_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_aircraft getVariable ""JTK_HALO_Takeoff"") AND (time > _t)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cancelled">*/
+        class cancelled
+        {
+          priority = 0.000000;
+          to="Reset_HALO";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aircraft getVariable ""JTK_HALO_Cancelled"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "takeoff">*/
+        class takeoff
+        {
+          priority = 0.000000;
+          to="teleport_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aircraft getVariable ""JTK_HALO_Takeoff"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "predefine_Loops">*/
+    class predefine_Loops
+    {
+      name = "predefine_Loops";
+      init = /*%FSM<STATEINIT""">*/"//Predefine for Loops" \n
+       "_old_1 = [];" \n
+       "_new_1 = [];" \n
+       "" \n
+       "_old_2 = [];" \n
+       "_new_2 = [];" \n
+       "" \n
+       "_old_3 = [];" \n
+       "_new_3 = [];" \n
+       "" \n
+       "_time = time + 300;" \n
+       "" \n
+       "_isAttached = if (_isC130) then {false}else{true};" \n
+       "_boardPos = if (_isC130) then {_aircraft modelToWorld [0,-5,-5]}else{_aircraft modelToWorld [0,-6.5,-3]};" \n
+       "_vehDrop = if (typeName(_aircraft getVariable ""JTK_HALO_VehDrop"") == ""BOOL"")then{false}else{true};" \n
+       "" \n
+       "_hlprs = [];" \n
+       "_offsets = if (JTK_HALO_Show_Boarding_Arrows) then {_aircraft getVariable ""boarding offsets""}else{nil};" \n
+       "if (!isNil ""_offsets"") then {" \n
+       "	_array = [];" \n
+       "	for ""_i"" from 0 to (count _offsets - 1) do {" \n
+       "		_hlpr = ""Sign_arrow_down_EP1"" createVehicle [0,0,0];" \n
+       "		_hlprs = _hlprs + [_hlpr];" \n
+       "		_array = _array + [[_hlpr,(_offsets select _i),_aircraft]];" \n
+       "	};" \n
+       "	{_x spawn {sleep 1.5;(_this select 0) attachTo [(_this select 2),(_this select 1)]}}foreach _array;" \n
+       "};" \n
+       "" \n
+       "//Unlock C130,Animate Doors, play global sound" \n
+       "if (locked _aircraft) then {_aircraft lock false};" \n
+       "" \n
+       "if !(_isC130) then {" \n
+       "	if (format[""%1"",(_aircraft getVariable ""anchor"")] == ""<null>"") then {" \n
+       "		_anchor = ""Sign_sphere10cm_EP1"" createVehicle position _aircraft;" \n
+       "		_anchor setDir getDir _aircraft;" \n
+       "		_offset = (_aircraft modelToWorld [0,0,0]);" \n
+       "		if (surfaceIsWater (position _aircraft)) then {_anchor setPosASL _offset}else{_anchor setPos _offset};" \n
+       "		_anchor setVectorUp (vectorUp _aircraft);" \n
+       "		_anchor setVEctorDir (vectorDir _aircraft); " \n
+       "		_aircraft setVariable [""anchor"",_anchor];" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "[_aircraft,_side,_pilot_type,_static,_hlprs] spawn {" \n
+       "	_aircraft = _this select 0;" \n
+       "	_side = _this select 1;" \n
+       "	_type = _this select 2;" \n
+       "	_static = _this select 3;" \n
+       "	_hlprs =  _this select 4; " \n
+       "	_sound = _aircraft getVariable ""door sound"";" \n
+       "" \n
+       "	_grp = createGroup _side;" \n
+       "	_pilot = _grp createUnit [_type,[0,0,0], [], 0, ""FORM""];" \n
+       "	" \n
+       "	WaitUntil {(!isNull _pilot)};" \n
+       "	_aircraft lockDriver false;" \n
+       "	" \n
+       "	WaitUntil {!(lockedDriver _aircraft) AND !(locked _aircraft)};" \n
+       "	_pilot assignAsDriver _aircraft;" \n
+       "	_pilot moveInDriver _aircraft;" \n
+       "	" \n
+       "	//Keep aircraft from moving" \n
+       "	[_pilot,_aircraft] spawn JTK_SpawnRabbits;" \n
+       "" \n
+       "	if !(_aircraft getVariable ""is a C130"") then {_aircraft attachTo[(_aircraft getVariable ""anchor""),[0,0,0]]};" \n
+       "		" \n
+       "	While {driver _aircraft != _pilot} do {" \n
+       "		_pilot moveInDriver _aircraft;" \n
+       "		sleep 0.5;" \n
+       "	};" \n
+       "	_aircraft lockDriver true;//Lock Pilot incase HOSTED MP: If player is server then he can move in pilot position. Not an issue for remote players" \n
+       "" \n
+       "	//====================Limit Cargo Positions Here====================//" \n
+       "	_vehDrop = if (typeName(_aircraft getVariable ""JTK_HALO_VehDrop"") == ""BOOL"")then{false}else{true};" \n
+       "	" \n
+       "	private [""_limit""];" \n
+       "	if (_vehDrop) then {" \n
+       "		_veh_type = (_aircraft getVariable ""JTK_HALO_VehDrop"") select 0;" \n
+       "		_limit = (_aircraft getVariable ""JTK_HALO_VehDrop"") select 1;" \n
+       "		[_aircraft,_veh_type,_pilot] spawn JTK_HALO_Spawn_Veh; " \n
+       "		_static setVariable [""JTK_HALO_Vehicle_Released"",false,true];" \n
+       "	}else{_limit = if (isMultiplayer) then {16}else{10}}; " \n
+       "" \n
+       "	for ""_j"" from 2 to _limit do {_aircraft lockCargo [_j, false]};" \n
+       "	//=========================================================//" \n
+       "	" \n
+       "	_aircraft animate [""ramp_bottom"",1];" \n
+       "	_aircraft animate [""ramp_Top"",1];" \n
+       "" \n
+       "	if (!isDedicated) then {_aircraft say3d _sound};	" \n
+       "	JTK_Call_PVEH = [[_aircraft,_sound],compile ""(_this select 0) say3D (_this select 1)""]; " \n
+       "	publicVariable ""JTK_Call_PVEH"";" \n
+       "" \n
+       "	if (count _hlprs > 0)  then {" \n
+       "		While {!(_aircraft getVariable ""JTK_HALO_Takeoff"") AND !(_aircraft getVariable ""JTK_HALO_Cancelled"")} do {" \n
+       "			if (count crew _aircraft >= _limit) then {" \n
+       "				{_x hideObject true} foreach _hlprs;" \n
+       "				JTK_Call_PVEH = [_hlprs,compile ""{_x hideObject true} foreach _this""];" \n
+       "				publicVariable ""JTK_Call_PVEH"";" \n
+       "			};" \n
+       "			WaitUntil {(_aircraft getVariable ""JTK_HALO_Takeoff"") OR (_aircraft getVariable ""JTK_HALO_Cancelled"") OR (count crew _aircraft < _limit)}; " \n
+       "			if (count crew _aircraft < _limit) then {" \n
+       "				{_x hideObject false} foreach _hlprs;" \n
+       "				JTK_Call_PVEH = [_hlprs,compile ""{_x hideObject false} foreach _this""];" \n
+       "				publicVariable ""JTK_Call_PVEH"";" \n
+       "			};" \n
+       "			sleep 1;" \n
+       "		};" \n
+       "	};" \n
+       "					" \n
+       "	While {(driver _aircraft) == _pilot AND (alive _pilot)} do {sleep 1};//Delete Pilot and Lock position once he is no longer driver" \n
+       "	_aircraft lockDriver true;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Loops_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "predefine_Setup">*/
+    class predefine_Setup
+    {
+      name = "predefine_Setup";
+      init = /*%FSM<STATEINIT""">*/"_old = [];" \n
+       "_new = [];" \n
+       "" \n
+       "[_aircraft,""WHITE""] call JTK_HALO_Boarding_Aircraft_Lights;" \n
+       "JTK_Call_PVEH = [[_aircraft,""WHITE""],JTK_HALO_Boarding_Aircraft_Lights]; publicVariable ""JTK_Call_PVEH""; " \n
+       "" \n
+       "if(_isAttached) then {detach _aircraft};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Setup__Loop";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Reset_HALO">*/
+    class Reset_HALO
+    {
+      name = "Reset_HALO";
+      init = /*%FSM<STATEINIT""">*/"_aircraft setVariable [""Ready"",false];" \n
+       "_aircraft lock true;//Lock aircraft to Keep units in and prevent those in from leaving//Keeps crew consistent" \n
+       "" \n
+       "//Delete RP Marker" \n
+       "deleteMarker (_aircraft getVariable ""JTK_HALO_DropZoneMarker"");" \n
+       "" \n
+       "//Delete Pilot" \n
+       "_pilot = driver _aircraft;" \n
+       "if (local _pilot) then {_pilot hideObject true};" \n
+       "if (isMultiplayer) then {JTK_Call_PVEH = [_pilot,(compile ""_this hideObject true"")]; publicVariable ""JTK_Call_PVEH""};" \n
+       "" \n
+       "_pilot action [""Eject"",_aircraft];" \n
+       "_pilot spawn {" \n
+       "	WaitUntil {_this == vehicle _this};" \n
+       "	deleteVehicle _this;" \n
+       "};" \n
+       "" \n
+       "//Monitor players in Aircraft" \n
+       "_aircraft spawn {" \n
+       "	While {true} do {" \n
+       "		_players = {(isPlayer _x) AND (alive _x) AND (_x in _this)} count allUnits;" \n
+       "		if (_players <= 0) exitWith {_this lock false};" \n
+       "		sleep 1;" \n
+       "	};" \n
+       "	_this lockdriver true;	" \n
+       "	for ""_i"" from 0 to 26 do {_this lockCargo [_i, true]};" \n
+       "};" \n
+       "" \n
+       "//Eject/Unassign crew for reset" \n
+       "_aircraft spawn {" \n
+       "	_C130_cargo = crew _this - [driver _this];" \n
+       "	While {count _C130_cargo > 0} do {" \n
+       "		for ""_i"" from 0 to (count _C130_cargo - 1) do {_unit action [""GetOut"",_this]};" \n
+       "		sleep 0.5;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "//Cleanup" \n
+       "[_aircraft,_static,JTK_HALO_Helper_Arrows] spawn {" \n
+       "	_aircraft 	= _this select 0;" \n
+       "	_static  	= _this select 1;" \n
+       "	_HelprArrows = _this select 2;" \n
+       "	//_Marker = _aircraft getVariable ""JTK_Static_Marker"";" \n
+       "	_cargo = crew _aircraft - [driver _aircraft];" \n
+       "	" \n
+       "	//Delete Marker" \n
+       "	//deletemarker _Marker;" \n
+       "	" \n
+       "	While {count _cargo > 0} do { " \n
+       "		_cargo = crew _aircraft - [driver _aircraft];" \n
+       "		if (count _C130_cargo <= 0) exitwith {};" \n
+       "		sleep 0.1;" \n
+       "	};" \n
+       "	" \n
+       "	//delete helper Arrows" \n
+       "	{detach _x; deleteVehicle _x} forEach _HelprArrows;" \n
+       "" \n
+       "	//Animate Ramp" \n
+       "	_aircraft animate [""ramp_bottom"",0];" \n
+       "	_aircraft animate [""ramp_Top"",0];" \n
+       "" \n
+       "	_sound = if ((typeof _aircraft == ""C130J_US_EP1"") OR (typeof _aircraft == ""C130J"")) then{""JTK_C130_doors""}else{""JTK_MV22_doors""};" \n
+       "	if (!isDedicated) then {_aircraft say3d _sound};" \n
+       "	for ""_i"" from 0 to (count playableUnits - 1) do {" \n
+       "		_code = ""if ((!local (_this select 0)) OR (((_this select 0) distance (_this select 1)) > 100)) exitWith {}; (_this select 1) say3D (_this select 2)"";	" \n
+       "		JTK_Call_PVEH = [[(playableUnits select _i),_aircraft,_sound],compile _code]; publicVariable ""JTK_Call_PVEH"";" \n
+       "	};" \n
+       "" \n
+       "	_aircraft setVariable [""Static_Set"",false];" \n
+       "	_aircraft setVariable [""JTK_HALO_Takeoff"",false,true];" \n
+       "	sleep 5;" \n
+       "	_aircraft setVariable [""JTK_HALO_Cancelled"",false,true];" \n
+       "	_aircraft setVariable [""Ready"",true];" \n
+       "}; "/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "SETUP_Ready">*/
+        class SETUP_Ready
+        {
+          priority = 0.000000;
+          to="predefine_Setup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aircraft getVariable ""Ready"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "teleport_">*/
+    class teleport_
+    {
+      name = "teleport_";
+      init = /*%FSM<STATEINIT""">*/"if (count _hlprs > 0) then {{deleteVehicle _x} foreach _hlprs};" \n
+       "" \n
+       "private [""_UnitPosArray"",""_commandPos"",""_attachPos"",""_AI""];" \n
+       "	" \n
+       "_vehDrop = if (typeName(_aircraft getVariable ""JTK_HALO_VehDrop"") == ""BOOL"")then{false}else{true};" \n
+       "_commandUnit = (_aircraft getVariable ""JTK_HALO_Command_Unit"");" \n
+       "" \n
+       "if (isMultiplayer) then {" \n
+       "	_index = if !(_vehDrop) then {0}else{1};" \n
+       "	_UnitPosArray = _attachArrays select _index;		" \n
+       "}else{" \n
+       "	_AI = (units group player) - [player];" \n
+       "	if (count _AI > 0) then {" \n
+       "		_index = if (_vehDrop) then {1}else{0};" \n
+       "		_array = _attachArrays select _index;" \n
+       "		_func = _array select (count _array - 1);" \n
+       "		_array resize (count _array - 1); " \n
+       "		JTK_AI_AttachPos_Array = _array;" \n
+       "		_commandPos = [JTK_AI_AttachPos_Array,_AI] call _func;" \n
+       "	}else{" \n
+       "		_commandPos = if (_isC130) then {" \n
+       "			if !(_vehDrop) then {[0,-2.0,-4.5]}else{[0,-4.0,-4.5]};" \n
+       "		}else{" \n
+       "			if !(_vehDrop) then {[0,-2,-2.5]}else{[0,1.5,-2.5]};" \n
+       "		};" \n
+       "	};" \n
+       "			" \n
+       "};" \n
+       "		" \n
+       "//Inititiates Decoy Simulation" \n
+       "_static setVariable [""JTK_CountDown_Started"",false];" \n
+       "" \n
+       "//Define HALO units: All Units w/o Driver" \n
+       "_HALO_units = [];" \n
+       "{if (_x != driver _aircraft) then {_HALO_units = _HALO_units + [_x]}} foreach crew _aircraft;" \n
+       "	" \n
+       "//Player Units" \n
+       "_players = [];" \n
+       "{if ((isPlayer _x) AND (_x in _aircraft)) then {_players = _players + [_x]}} foreach _HALO_units;" \n
+       "_aircraft setVariable [""HALO Players"",_players];" \n
+       "" \n
+       "//Preload Decoy" \n
+       "[_aircraft,_static,_side,_players,_home] spawn JTK_Spawn_Decoy; " \n
+       "" \n
+       "//-----------------------------------------------------------------------------------------------//" \n
+       "//=======================MULTIPLAYER=====================//" \n
+       "//-----------------------------------------------------------------------------------------------//" \n
+       "if (isMultiplayer) then {" \n
+       "	_aircraft setVariable [""JTK_Distance_Out"",""standby"",true];" \n
+       "	//Execute Player HALO scipts locally for each player" \n
+       "	for ""_i"" from 0 to (count _players - 1) do {" \n
+       "		_unit = _players select _i; " \n
+       "		_attachPos = _UnitPosArray select _i;" \n
+       "		//_unit setVariable [""JTK_HALO_At_Static"",false,true];" \n
+       "		_unit setVariable [""JTK_HALO_Player_Ready"",false,true];" \n
+       "		_array = [_unit,_aircraft,_static,_attachpos];" \n
+       "		if (local _unit) then {" \n
+       "			_array spawn JTK_HALO_PlayerExec;" \n
+       "		}else{JTK_Spawn_PVEH = [_array,JTK_HALO_PlayerExec]; publicVariable ""JTK_Spawn_PVEH""};" \n
+       "		" \n
+       "	};" \n
+       "	_static setVariable [""JTK_Jump_Status"",""white"",true];" \n
+       "	" \n
+       "	//Start verifying Clients sync" \n
+       "	[_static,_players,_vehDrop,_side,_aircraft] spawn {" \n
+       "		" \n
+       "		_static = _this select 0;" \n
+       "		_players = _this select 1;" \n
+       "		_vehDrop = _this select 2;" \n
+       "		_side = _this select 3;" \n
+       "		_aircraft = _this select 4;" \n
+       "		" \n
+       "		private [""_dly""];" \n
+       "		" \n
+       "		JTK_HALO_MP_Sync_Complete = false;" \n
+       "		[_static,_players] spawn JTK_HALO_MP_Sync;" \n
+       "		WaitUntil {JTK_HALO_MP_Sync_Complete};" \n
+       "		_static setVariable [""JTK_CountDown_Started"",true];//=======Inititate decoy Start" \n
+       "" \n
+       "		Waituntil {!isNil ""JTK_HALO_JumpStatus_dly_WHITE""};" \n
+       "		" \n
+       "		_t_till_Red = JTK_HALO_JumpStatus_dly_WHITE + time;" \n
+       "		WaitUntil {time > _t_till_Red};" \n
+       "		_static setVariable [""JTK_Jump_Status"",""red"",true];" \n
+       "		_t_till_Green = (JTK_HALO_JumpStatus_dly_RED - 5) + time;" \n
+       "		WaitUntil {time > _t_till_Green};" \n
+       "		_static setVariable [""JTK_HALO_OpenDoors"",true,true];" \n
+       "		_static animate [""ramp_bottom"",1];" \n
+       "		_static animate [""ramp_Top"",1];" \n
+       "		sleep 5;" \n
+       "		_static setVariable [""JTK_Jump_Status"",""green"",true];" \n
+       "		//Execute Vehicle drop if requested" \n
+       "		if (_vehDrop) then {" \n
+       "			[_static,_side,_aircraft] spawn JTK_HALO_Release_Veh;" \n
+       "			Waituntil {(_static getVariable ""JTK_HALO_Vehicle_Released"")};" \n
+       "			//hintSilent ""Released"";//<================" \n
+       "			_dly = 1.5;" \n
+       "		}else{_dly = 0.75};" \n
+       "" \n
+       "		_dly = 5;" \n
+       "		" \n
+       "		if (!isDedicated) then {_static say3d ""JTK_Move""};" \n
+       "		for ""_i"" from 0 to (count playableUnits - 1) do {" \n
+       "			_code = ""if ((!local (_this select 0)) OR (((_this select 0) distance (_this select 1)) > 100)) exitWith {}; (_this select 1) say3D (_this select 2)"";	" \n
+       "			JTK_Call_PVEH = [[(playableUnits select _i),_static,""JTK_Move""],compile _code]; publicVariable ""JTK_Call_PVEH"";" \n
+       "		};" \n
+       "" \n
+       "		sleep 0.25;" \n
+       "		" \n
+       "		_animation = if ((typeof _static) == ""C130J_static_EP1"") then{""AmovPercMrunSnonWnonDf""}else{""AmovPercMwlkSnonWnonDf""}; " \n
+       "		_code = ""if (!local (_this select 0)) exitWith {};(_this select 0) enableSimulation true; WaitUntil{simulationEnabled (_this select 0)}; for '_i' from 1 to 3 do {(_this select 0) playmove (_this select 1)}"";" \n
+       "		for ""_i"" from 0 to (count _players - 1) do {" \n
+       "			_unit = _players select _i;" \n
+       "			if (local _unit) then {" \n
+       "				[_unit,_animation] spawn (compile _code);" \n
+       "			}else{JTK_Spawn_PVEH = [[_unit,_animation],compile _code]; publicVariable ""JTK_Spawn_PVEH""};" \n
+       "			sleep _dly;" \n
+       "		};	" \n
+       "	};" \n
+       "//-------------------------------------------------------------------------------------------------//" \n
+       "//=======================SINGLE PLAYER=====================//" \n
+       "//------------------------------------------------------------------------------------------------//" \n
+       "}else{" \n
+       "	player setVariable [""JTK_HALO_At_Static"",false,true];" \n
+       "	[player,_aircraft,_static,_commandPos,_AI] spawn JTK_HALO_PlayerExec;" \n
+       "};" \n
+       "//-----------------------------------------------------------------------------------------------//" \n
+       "//=====================================================//" \n
+       "//-----------------------------------------------------------------------------------------------//" \n
+       "//Animate Ramp" \n
+       "_aircraft animate [""ramp_bottom"",0];" \n
+       "_aircraft animate [""ramp_Top"",0];" \n
+       "" \n
+       "_sound = _aircraft getVariable ""door sound"";" \n
+       "if (!isDedicated) then {_aircraft say3d _sound};" \n
+       "for ""_i"" from 0 to (count playableUnits - 1) do {" \n
+       "	_code = " \n
+       "	""" \n
+       "		if ((!local (_this select 0)) OR (((_this select 0) distance (_this select 1)) > 100)) exitWith {}; " \n
+       "		if (typeof (_this select 1) == 'MV22') then {" \n
+       "			((_this select 0) getVariable 'MV22 dummy') animate ['ramp_bottom',1];" \n
+       "			((_this select 0) getVariable 'MV22 dummy') animate ['ramp_top',1];" \n
+       "		};	 " \n
+       "		(_this select 1) say3D (_this select 2);" \n
+       "	"";	" \n
+       "	JTK_Call_PVEH = [[(playableUnits select _i),_aircraft,_sound],compile _code]; publicVariable ""JTK_Call_PVEH"";" \n
+       "};" \n
+       "" \n
+       "//Manage Fuel" \n
+       "_aircraft spawn {" \n
+       "	_dly = if ((typeof _this) == ""MV22"") then {1.5}else{3};" \n
+       "	sleep _dly; " \n
+       "	_this setFuel 1.0;" \n
+       "	if ((typeof _this) == ""MV22"") then {_this action [""EngineOn"",_this]};" \n
+       "	While {fuel _this > 0} do {" \n
+       "		_PlayersInAirCraft = {(isPlayer _x) AND (alive _x) AND (_x in _this)} count allUnits;" \n
+       "		if (_PlayersInAirCraft == 0) exitWith {_this setFuel 0};" \n
+       "		sleep 1;" \n
+       "	};	" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Engines_on">*/
+        class Engines_on
+        {
+          priority = 0.000000;
+          to="Start_Reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"fuel _aircraft != 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Delete_Pilot_">*/
+    class Delete_Pilot_
+    {
+      name = "Delete_Pilot_";
+      init = /*%FSM<STATEINIT""">*/"_pilot = driver _aircraft;" \n
+       "" \n
+       "[_aircraft,""OFF""] call JTK_HALO_Boarding_Aircraft_Lights;" \n
+       "JTK_Call_PVEH = [[_aircraft,""OFF""],JTK_HALO_Boarding_Aircraft_Lights]; publicVariable ""JTK_Call_PVEH""; " \n
+       "" \n
+       "if (!isNull _pilot) then {" \n
+       "	if (local _pilot) then {_pilot hideObject true};" \n
+       "	JTK_Call_PVEH = [_pilot,(compile ""_this hideObject true"")]; publicVariable ""JTK_Call_PVEH"";  " \n
+       "	unassignVehicle _pilot;" \n
+       "	_pilot spawn {WaitUntil {_this == vehicle _this};deleteVehicle _this};" \n
+       "	_pilot action [""Eject"",_aircraft];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "SETUP_Ready">*/
+        class SETUP_Ready
+        {
+          priority = 0.000000;
+          to="predefine_Setup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aircraft getVariable ""Ready"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Start_Reset">*/
+    class Start_Reset
+    {
+      name = "Start_Reset";
+      init = /*%FSM<STATEINIT""">*/"_commandUnit = _aircraft getVariable ""JTK_HALO_Command_Unit"";" \n
+       "_commandUnit  setVariable ['JTK_HALO_Command_Unit',nil,true];" \n
+       "_aircraft setVariable ['JTK_HALO_Command_Unit',nil,true];" \n
+       "_aircraft setVariable [""Ready"",false];" \n
+       "_aircraft setVariable [""JTK_Reset_Marker"",false];" \n
+       "" \n
+       "" \n
+       "" \n
+       "//Lock C130 For to keep units in C130, inside" \n
+       "_aircraft lock true;" \n
+       "_aircraft spawn {" \n
+       "	While {true} do {" \n
+       "		_players = {(isPlayer _x) AND (alive _x) AND (_x in _this)} count allUnits;" \n
+       "		if (_players <= 0) exitWith {_this lock false};" \n
+       "		sleep 1;" \n
+       "	};" \n
+       "	_this lockdriver true;	" \n
+       "	for ""_i"" from 0 to 26 do {_this lockCargo [_i, true]};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "//delete helper Arrows" \n
+       "//{detach _x; deleteVehicle _x} forEach JTK_HALO_Helper_Arrows;" \n
+       "" \n
+       "//Reset Takeoff" \n
+       "_aircraft spawn {sleep (JTK_HALO_Cooldown*0.66); _this setVariable [""JTK_HALO_Takeoff"",false,true]};" \n
+       "" \n
+       "" \n
+       "//Start marker move simulation" \n
+       "[_aircraft,_static,_isC130] spawn {" \n
+       "	_aircraft 	= _this select 0;" \n
+       "	_static 		= _this select 1;" \n
+       "	_isC130 	= _this select 2;" \n
+       "	_kph 		= (_aircraft getVariable ""speeds"") select 0;" \n
+       "	" \n
+       "	_speed = _kph/3.2; " \n
+       "	_dist = 3000;" \n
+       "	_n = if (_isC130) then {1}else{-1};" \n
+       "	_ingress = (_static modelToWorld [0,(_dist*_n),0]); " \n
+       "	_egress = (_static modelToWorld [0,(_dist*_n)*-1,0]); " \n
+       "	_dir = [_ingress, _static] call BIS_fnc_dirTo;" \n
+       "	_vel = [sin(_dir)*_speed,cos(_dir)*_speed,0];" \n
+       "	_decoy = ""Sign_arrow_down_EP1"" createVehicle _ingress;" \n
+       "" \n
+       "	_t = (_dist/_speed);" \n
+       "" \n
+       "	JTK_HALO_JumpStatus_dly_WHITE = (1/3)*_t;" \n
+       "	JTK_HALO_JumpStatus_dly_RED = (2/3)*_t;" \n
+       "" \n
+       "	While {!(_static getVariable ""JTK_CountDown_Started"")}do{sleep 1};" \n
+       "	" \n
+       "	" \n
+       "	[_aircraft,_static] spawn {" \n
+       "		_aircraft 		= _this select 0;" \n
+       "		_static 			= _this select 1;" \n
+       "	" \n
+       "		_decoy_mrkr 	= _aircraft getVariable ""JTK_HALO_DecoyMarker"";" \n
+       "		_dropZone 	= _aircraft getVariable ""JTK_HALO_DropZoneMarker"";" \n
+       "	" \n
+       "		WaitUntil {(markerPos _decoy_mrkr) distance (markerPos _dropZone) > 1000};" \n
+       "		" \n
+       "		While {(_static getVariable ""JTK_Jump_Status"") != ""green""} do {" \n
+       "			_dist = (markerPos _decoy) distance (markerPos _dropZone); " \n
+       "			_aircraft setVariable [""JTK_Distance_Out"",(round _dist),true];" \n
+       "			sleep 1; " \n
+       "		};" \n
+       "		sleep JTK_HALO_Cooldown; //<===========Cooldown" \n
+       "		_aircraft setVariable [""JTK_Reset_Marker"",true];" \n
+       "	};" \n
+       "	[_decoy,_vel,_static,_egress] spawn {" \n
+       "		_decoy 	= _this select 0;" \n
+       "		_vel 		= _this select 1;" \n
+       "		_static 		= _this select 2;" \n
+       "		_egress 	= _this select 3;" \n
+       "			" \n
+       "		While {_decoy distance _static > 150} do {" \n
+       "			_decoy setVelocity _vel; " \n
+       "			sleep 0.05;" \n
+       "		};" \n
+       "		While {_decoy distance _egress > 150} do {" \n
+       "			_decoy setVelocity _vel; " \n
+       "			sleep 0.05;" \n
+       "		};" \n
+       "	};" \n
+       "	[_aircraft,_static,_decoy] spawn {" \n
+       "		_aircraft = _this select 0;" \n
+       "		_static = _this select 1;" \n
+       "		_decoy = _this select 2;" \n
+       "		_marker = _aircraft getVariable ""JTK_HALO_DecoyMarker"";" \n
+       "		" \n
+       "		_checks = 0;" \n
+       "		While {!(_aircraft getVariable ""JTK_Reset_Marker"")} do {" \n
+       "			_marker setMarkerPos (getPos _decoy);" \n
+       "			if (_checks >= 2) then {" \n
+       "				_checks = 0;" \n
+       "				JTK_Call_PVEH = [[_marker,getPos _decoy],(compile ""(_this select 0) setmarkerPos (_this select 1)"")];" \n
+       "				publicVariable ""JTK_Call_PVEH"";" \n
+       "			}; " \n
+       "			_checks = _checks + 0.1;" \n
+       "			sleep 0.1;" \n
+       "		};" \n
+       "		deleteVehicle _decoy;" \n
+       "		_marker setMarkerPos (getPos _aircraft);" \n
+       "		JTK_Call_PVEH = [[_marker,getPos _aircraft],(compile ""(_this select 0) setmarkerPos (_this select 1)"")];" \n
+       "		publicVariable ""JTK_Call_PVEH"";" \n
+       "		_aircraft setVariable [""Ready"",true];//Reset here!!!" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Pilot_Done">*/
+        class Pilot_Done
+        {
+          priority = 0.000000;
+          to="Delete_Pilot_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"fuel _aircraft == 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="start";
+  finalStates[] =
+  {
+    "END",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,258 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, JTK_HALOSetUpHint">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,250,615.221985,-783.034668,705.221985,-733.034546,0.000000,"start"};
+item1[] = {"_",8,218,615.227783,-663.954773,705.227783,-613.954773,0.000000,""};
+item2[] = {"Player_is_Dead",2,250,302.070770,-502.513336,392.070862,-452.513245,0.000000,"Player is Dead"};
+item3[] = {"Exit",1,250,615.105225,-1008.854980,705.105225,-958.855042,0.000000,"Exit"};
+item4[] = {"Playable",4,218,152.323944,-501.005096,242.323944,-451.005341,0.000000,"Playable"};
+item5[] = {"NOT_in_Vehicle",2,250,614.895935,-498.739532,704.895935,-448.739532,0.000000,"NOT in Vehicle"};
+item6[] = {"In_Vehicle",4,218,614.927795,-394.469757,704.927795,-344.469757,0.000000,"In Vehicle"};
+item7[] = {"__local",4,218,616.266602,-885.624084,706.266602,-835.624084,0.000000,"!local"};
+item8[] = {"Manage_Gear__",2,4346,614.959717,-280.322754,704.959534,-230.322754,0.000000,"Manage Gear" \n "" \n ""};
+item9[] = {"__C130",4,218,773.706116,-279.150024,863.705750,-229.150009,0.000000,"!C130"};
+item10[] = {"killed",4,218,459.277161,-501.883026,549.276978,-451.883026,0.000000,"killed"};
+item11[] = {"__Playable",4,218,301.344635,-1006.932129,391.344604,-956.932129,0.000000,"!Playable"};
+item12[] = {"Wait_til_alive",2,250,-13.004578,-502.401337,76.995384,-452.401581,0.000000,"Wait til alive"};
+item13[] = {"Respawned",4,218,-11.432842,-580.988892,78.567108,-530.988892,0.000000,"Respawned"};
+item14[] = {"Redefine",2,250,-11.432829,-661.147949,78.567184,-611.147949,0.000000,"Redefine"};
+item15[] = {"",7,210,815.305847,-480.397156,823.305847,-472.397156,0.000000,""};
+item16[] = {"",7,210,501.216949,-262.761871,509.216980,-254.761902,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,7};
+link2[] = {1,5};
+link3[] = {2,4};
+link4[] = {2,11};
+link5[] = {4,12};
+link6[] = {5,6};
+link7[] = {5,10};
+link8[] = {6,8};
+link9[] = {7,3};
+link10[] = {8,9};
+link11[] = {8,16};
+link12[] = {9,15};
+link13[] = {10,2};
+link14[] = {11,3};
+link15[] = {12,13};
+link16[] = {13,14};
+link17[] = {14,1};
+link18[] = {15,5};
+link19[] = {16,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,221,6316128,1,-295.236298,1198.389160,126.835167,-1102.792480,843,694,1};
+window[] = {0,-1,-1,-32000,-32000,894,30,1240,30,1,865};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "JTK_HALOSetUpHint";
+  class States
+  {
+    /*%FSM<STATE "start">*/
+    class start
+    {
+      name = "start";
+      init = /*%FSM<STATEINIT""">*/"_unit = _this select 0;" \n
+       "_aircraft = _this select 1;" \n
+       "_static = _this select 2;" \n
+       "" \n
+       "_isplayable =" \n
+       "	if(isMultiplayer) then{" \n
+       "		if(_unit in playableUnits) then{true} else{false};" \n
+       "	} else {	false};" \n
+       "" \n
+       "			"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__local">*/
+        class __local
+        {
+          priority = 0.000000;
+          to="Exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!local _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="NOT_in_Vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Player_is_Dead">*/
+    class Player_is_Dead
+    {
+      name = "Player_is_Dead";
+      init = /*%FSM<STATEINIT""">*/"JTK_HALO_In_Aircraft = nil;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__Playable">*/
+        class __Playable
+        {
+          priority = 0.000000;
+          to="Exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_isplayable)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Playable">*/
+        class Playable
+        {
+          priority = 0.000000;
+          to="Wait_til_alive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_isplayable"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Exit">*/
+    class Exit
+    {
+      name = "Exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "NOT_in_Vehicle">*/
+    class NOT_in_Vehicle
+    {
+      name = "NOT_in_Vehicle";
+      init = /*%FSM<STATEINIT""">*/"_unit == vehicle _unit;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "killed">*/
+        class killed
+        {
+          priority = 0.000000;
+          to="Player_is_Dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "In_Vehicle">*/
+        class In_Vehicle
+        {
+          priority = 0.000000;
+          to="Manage_Gear__";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_unit != vehicle _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Manage_Gear__">*/
+    class Manage_Gear__
+    {
+      name = "Manage_Gear__";
+      init = /*%FSM<STATEINIT""">*/"_current_vehicle = vehicle _unit;" \n
+       "" \n
+       "_lastCamView = if ((cameraOn == vehicle _unit) AND (cameraView == ""External"")) then {""External""}else{""Internal""};" \n
+       "_unit setVariable [""last cammera view"",_lastCamView];" \n
+       "" \n
+       "if ((_current_vehicle == _aircraft) AND (isNil ""JTK_HALO_In_Aircraft"")) then {" \n
+       "	[_unit,_static,_aircraft] spawn JTK_ManageHaloGear;" \n
+       "	" \n
+       "	if !(isMultiplayer) then {" \n
+       "		[_aircraft] spawn JTK_AI_AutoBoard;" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "killed">*/
+        class killed
+        {
+          priority = 0.000000;
+          to="Player_is_Dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "__C130">*/
+        class __C130
+        {
+          priority = 0.000000;
+          to="NOT_in_Vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_unit != vehicle _unit) OR (_current_vehicle  != _aircraft) OR (!isNil ""JTK_HALO_In_Aircraft"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wait_til_alive">*/
+    class Wait_til_alive
+    {
+      name = "Wait_til_alive";
+      init = /*%FSM<STATEINIT""">*/"_name_unit = name _unit;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Respawned">*/
+        class Respawned
+        {
+          priority = 0.000000;
+          to="Redefine";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_name_unit == name _x} count playableUnits > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Redefine">*/
+    class Redefine
+    {
+      name = "Redefine";
+      init = /*%FSM<STATEINIT""">*/"{if(name _x == _name_unit) exitWith{_unit = _x}} foreach playableUnits;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="NOT_in_Vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="start";
+  finalStates[] =
+  {
+    "Exit",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,293 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Use_BailOut_Mask">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"Start"};
+item1[] = {"_",8,218,-75.000000,-75.000000,25.000000,-25.000000,0.000000,""};
+item2[] = {"Map_Configured",2,4346,-75.000000,25.000000,25.000000,75.000000,0.000000,"Map Configured"};
+item3[] = {"true",4,218,-175.000000,125.000000,-75.000000,175.000000,0.000000,"true"};
+item4[] = {"false",4,218,25.000000,125.000000,125.000000,175.000000,0.000000,"false"};
+item5[] = {"Configure_map",2,250,-75.000000,225.000000,25.000000,275.000000,0.000000,"Configure map"};
+item6[] = {"end",1,250,-325.000000,125.000000,-225.000000,175.000000,0.000000,"end"};
+item7[] = {"__local",4,218,-325.000000,-175.000000,-225.000000,-125.000000,0.000000,"!local"};
+link0[] = {0,1};
+link1[] = {0,7};
+link2[] = {1,2};
+link3[] = {2,3};
+link4[] = {2,4};
+link5[] = {3,6};
+link6[] = {4,5};
+link7[] = {5,3};
+link8[] = {7,6};
+globals[] = {25.000000,1,0,0,0,640,480,1,17,6316128,1,-232.261841,147.471466,1105.143799,-336.468262,221,839,1};
+window[] = {0,-1,-1,-1,-1,1129,120,1080,120,1,243};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "Use_BailOut_Mask";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"//by Kempco" \n
+       "" \n
+       "_unit = _this select 0;" \n
+       "_debug = _this select 1;" \n
+       "" \n
+       "_MapConfigured = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__local">*/
+        class __local
+        {
+          priority = 0.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!local _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Map_Configured";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Map_Configured">*/
+    class Map_Configured
+    {
+      name = "Map_Configured";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "" \n
+       "_MapConfigured = true;" \n
+       "" \n
+       "switch (WorldName) do {" \n
+       "	case ""Takistan"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.065;" \n
+       "		JTK_MapCenter = [6400,6400];" \n
+       "	};" \n
+       "	case ""Chernarus"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.05;" \n
+       "		JTK_MapCenter = [7680,7680];" \n
+       "	};" \n
+       "	case ""utes"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.05;" \n
+       "		JTK_MapCenter = [2560,2560];" \n
+       "	};" \n
+       "	case ""ProvingGrounds_PMC"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.25;" \n
+       "		JTK_MapCenter = [1024,1024];" \n
+       "	};" \n
+       "	case ""Shapur_BAF"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.25;" \n
+       "		JTK_MapCenter = [1024,1024];" \n
+       "	};" \n
+       "	case ""Zargabad"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.085;" \n
+       "		JTK_MapCenter = [4096,4096];" \n
+       "	};" \n
+       "	case ""Desert_E"": {" \n
+       "		JTK_HALO_Min_GPS_Zoom = 0.25;" \n
+       "		JTK_MapCenter = [1024,1024];" \n
+       "	};" \n
+       "	" \n
+       "	case ""isladuala"": {" \n
+       "		JTK_Min_GPS_Zoom = 0.077;" \n
+       "		JTK_MapCenter = [5120,5120];" \n
+       "	};" \n
+       "	default {" \n
+       "		JTK_HALO_Min_GPS_Zoom = nil;" \n
+       "		JTK_MapCenter = nil;" \n
+       "		_MapConfigured = false;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "false">*/
+        class false
+        {
+          priority = 0.000000;
+          to="Configure_map";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(isNil ""JTK_HALO_Min_GPS_Zoom"") AND ( isNil ""JTK_MapCenter"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""JTK_HALO_Min_GPS_Zoom"") AND ( !isNil ""JTK_MapCenter"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Configure_map">*/
+    class Configure_map
+    {
+      name = "Configure_map";
+      init = /*%FSM<STATEINIT""">*/"[_unit,_debug] spawn {	" \n
+       "	private [""_grid_size""];" \n
+       "	disableserialization;" \n
+       "	" \n
+       "	_unit = _this select 0;" \n
+       "	_debug = _this select 1;" \n
+       "" \n
+       "	openMap [true, false];" \n
+       "	WaitUntil {visibleMap};" \n
+       "" \n
+       "	_Map_display = findDisplay 12;" \n
+       "	_map_cntrl = _Map_display displayCtrl 51;" \n
+       "	// Temporarily zoom out as much as possible and measure the screen." \n
+       "	_map_cntrl ctrlMapAnimAdd [0, 1000, [9999999999, 9999999999]];" \n
+       "	ctrlMapAnimCommit _map_cntrl;" \n
+       "	waitUntil {ctrlMapAnimDone _map_cntrl};" \n
+       "	_zoom_max = ctrlMapScale _map_cntrl;" \n
+       "	_limit =  _map_cntrl ctrlMapScreenToWorld [0.5, 0.5];" \n
+       "	_x_max = _limit select 0;" \n
+       "	_y_max = _limit select 1;" \n
+       "" \n
+       "	_top_right = [_x_max,_y_max,0];" \n
+       "	_top_left = [0,_y_max,1];" \n
+       "	_btm_left = [0,0,0];" \n
+       "	_btm_right = [_x_max,0,0];" \n
+       "" \n
+       "	_map_center = [0.5*(_limit select 0),0.5*(_limit select 1)];" \n
+       "" \n
+       "	_cfg=configFile>>""CfgWorlds"">>worldName>>""Grid"";" \n
+       "	_grid_size_y =getNumber(_cfg>>""Zoom1"">>""stepX"");" \n
+       "	_grid_size_x =getNumber(_cfg>>""Zoom1"">>""stepY"");" \n
+       "" \n
+       "" \n
+       "	_grid_size = abs(_grid_size_y);" \n
+       "	if (_grid_size_y < 100) then {" \n
+       "		_grid_size = abs(_grid_size_y*_grid_size_x);" \n
+       "	}else{_grid_size = abs(_grid_size_y)};" \n
+       "" \n
+       "	_w = _top_right distance _top_left;" \n
+       "	_h = _top_right distance _btm_right;" \n
+       "" \n
+       "	_map_width = _limit select 0;" \n
+       "	_map_height = _limit select 1;" \n
+       "" \n
+       "	_Map_Area_Grids = (_map_width/_grid_size)*(_map_height/_grid_size);" \n
+       "	_Map_Area_km = (_map_width/1000)*(_map_height/1000);" \n
+       "" \n
+       "" \n
+       "	if (_debug) then {" \n
+       "		_m = createmarker [""MapSize"",_map_center];" \n
+       "		_m setmarkerShape ""RECTANGLE"";" \n
+       "		_m setmarkerSize [_map_width /2,_map_height/2];" \n
+       "		_m setmarkerAlpha 0.15;" \n
+       "		_m setmarkercolor ""ColorRed"";" \n
+       "		" \n
+       "		_m = createmarker [""MapWNote"",[-150,(_map_center select 0)]];" \n
+       "		_m setmarkerText format[""Delta X: %1 km"",(_x_max/1000)];" \n
+       "		_m setmarkersize [0,0];" \n
+       "		_m setmarkerType ""Dot"";" \n
+       "		_m setmarkercolor ""Colorblack"";" \n
+       "		" \n
+       "		_m = createmarker [""MapLNote"",[(_map_center select 1),-150]];" \n
+       "		_m setmarkerText format [""Delta Y: %1 km"",(_y_max/1000)];" \n
+       "		_m setmarkersize [0,0];" \n
+       "		_m setmarkerType ""Dot"";" \n
+       "		_m setmarkercolor ""Colorblack"";" \n
+       "		" \n
+       "		_m = createmarker [""MapSizeNote"",_map_center];" \n
+       "		_m setmarkerText format [""(Map Size: %1 sq km)"",_Map_Area_km];" \n
+       "		_m setmarkersize [0,0];" \n
+       "		_m setmarkerType ""Dot"";" \n
+       "		_m setmarkercolor ""Colorblack"";" \n
+       "	};" \n
+       "" \n
+       "	_mapsize = _Map_Area_km;" \n
+       "" \n
+       "	WaitUntil {!isNil ""_mapsize""};" \n
+       "" \n
+       "	_Size_stndrd = 235.93;" \n
+       "	_zoom_stndrd = 0.05;" \n
+       "" \n
+       "	private [""_zoom"",""_mltplr""];" \n
+       "" \n
+       "	_add = true;" \n
+       "	_percnt = (_mapsize/_Size_stndrd);" \n
+       "	if (_percnt  > 1) then {_percnt = _percnt mod 1;_add = false};" \n
+       "	_percntof = 1 - (_percnt);" \n
+       "	_zoom_dif = _percntof*_zoom_stndrd;" \n
+       "	if !(_add) then {" \n
+       "		_zoom = _zoom_stndrd - _zoom_dif; " \n
+       "	}else{" \n
+       "		_zoom = _zoom_dif + _zoom_stndrd; " \n
+       "	};" \n
+       "" \n
+       "	if (_zoom > 0.095) then {" \n
+       "		_zoom = 0.25" \n
+       "	}else{" \n
+       "		if (_zoom == 0) then {" \n
+       "			_zoom = _zoom + _zoom_stndrd" \n
+       "		}else{" \n
+       "			if (_zoom < 0) then {_zoom = 0};" \n
+       "		};		" \n
+       "	};" \n
+       "	JTK_HALO_Min_GPS_Zoom = _zoom;" \n
+       "	JTK_MapCenter = _map_center;" \n
+       "" \n
+       "	openMap [false, false];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "true">*/
+        class true
+        {
+          priority = 0.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""JTK_HALO_Min_GPS_Zoom"") AND ( !isNil ""JTK_MapCenter"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"if (local _unit) then {" \n
+       "	if (_debug) then {player globalchat format [""Configured: %1"",_MapConfigured]};" \n
+       "	if(count _this > 2) then {" \n
+       "		_str = format [""%1,JTK_Min_GPS_Zoom = %2,JTK_MapCenter = %3"",WorldName,JTK_HALO_Min_GPS_Zoom,JTK_MapCenter];" \n
+       "		if (_debug) then {hint _str};" \n
+       "		copytoclipboard _str;" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "end",
+  };
+};
+/*%FSM</COMPILE>*/

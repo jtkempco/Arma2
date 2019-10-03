@@ -1,0 +1,45 @@
+//by Kempco
+
+Version 1.6 
+FIXED: Aircraft would not reset on dedicated servers. 
+FIXED: Dialog control errors that referenced named IDCs that were undefined. 
+FIXED: Osprey props would appear upside down to remote players.
+FIXED: Closing the GPS, then reopening broke the GPS.
+Changed: Dummy/Decoy aircraft are created as side civilian to prevent markers from being visible.
+Changed: LZ marker now disappears once all players have landed.
+Changed: Bypass can be setup through vars defined in the editor. (See included readme for details).
+Changed: Reformatted init. (Cfgs in new locations so do not use an the old description.ext)
+Optimized server fsm by removing unneeded PVEHs.
+
+
+Version 1.5
+Fixed: Info text Spelling Error 
+Fixed: (ACE version) player gets hung up on aircraft and does not enter freefall
+Fixed: Hint text replaced with Titletext when called via PVEH. (Hint text is FUBAR'd)
+Fixed: Error in expression <(_this  select 0) setIdentity (_this select 1)> Only used when ACE is not used.
+Fixed: Water inserts not working when using "Bypass"
+Changed: Distance to marker buffer is constant in SP and MP now.
+Changed: (SP) AI fsm now verifies unit is alive when chute is depoyed.
+Added: Two bypass example missions. 
+
+Version 1.4
+Changed: (Single Player) Must be a team leader to Setup HALO jumps as well as initiate takeoff. 
+Changed: (Single Player) Script is initialized for all aircraft reguardless of players side. This will allow player to team switch between sides. 
+Fixed: Aircraft boarding lights not executing for remote players.
+
+Version 1.3
+New: CBA is no longer required.
+New: HALO insertions can now be performed with the MV22 Osprey.
+Added: Bypass HALO Setup Instructions.
+Fixed: Players using ACE would not appear to be in free fall to players not using ACE.
+Changed: Game logic JTK_Server no longer required.
+
+version 1.2
+Fixed: Remove O2 mask action showing up when player was not wearing a mask (NON-ACE). Interfered with NVGs. 
+Fixed: Multiplayer. (Missing various vars and conditions from when I consolidated the SP and MP).
+Added: Detailed readme covers installaton/Integration and options.  
+
+version 1.1
+Fixed: Vehdrop Variable undefined (Water inserts not working).
+Fixed: GPS not restored to player.
+
