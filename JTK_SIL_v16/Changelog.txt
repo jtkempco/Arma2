@@ -1,0 +1,34 @@
+version 1.6
+Added: ACR DLC Weapons (NOT Added to Weapons Crate. CgfPatch Reffernce needed). 
+Fixed: (ACE version) "ACE_AKMS" and "ACE_AKMS_SD".
+Fixed: (ACE version) Option would be available while player was in a vehicle.
+
+version 1.5
+Changed: (Addon version only) CBA is required 
+Changed: (Addon version only) Module disables the use of suppressors instead of enabling them.
+Added: Script will terminate if it detects player has addon version running.
+Added: Bis weapons in ammo crate are added according to DLCs detected.
+
+version 1.4
+New:   No Addons required!
+New:   Pistols are now supported
+New:   Sound effects (Idea courtesy of st-alpha)  
+New:   Script version now requires sound config be defined in Description.
+New:   Demo mission included for both the addon and script versions.
+New:   Addon version now requires a (JTK) Suppressors Module be placed on the map. 
+New:   JTK SF Weapons Crate/Script: Includes unsuppressed versions of all suppressable weapons according to your addons. 
+Added: RH Pistol pack Remake (by Robbert Hammer) 
+Added: RH SMG pack (by Robbert Hammer) 
+Added: "ace_akms_sd","ace_ak74m_sd","ace_ak74m_sd_kobra_f","ace_aks74_un" 
+
+version 1.2
+Added: ACE progress bar (Idea courtesy of st-alpha)
+Added: Mod Version added (signiturs not included.)
+Added: UFK Weapons Pack v1.1 (by the UKForces Team)
+Added: L119A1 Pack v2.01 (by Lennard)
+Added: FHQ Remington Weapon Pack v1.1 (by Alwarren)
+
+version 1.1
+Added: Design mastery M4s (by Hogthar & Mlacix)
+Added: 10 sec initialization delay. (Prevent conflicts with addons using the ACE self-interaction menu).
+

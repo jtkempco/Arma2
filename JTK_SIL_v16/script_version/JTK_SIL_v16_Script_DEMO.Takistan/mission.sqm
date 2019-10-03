@@ -1,0 +1,183 @@
+version=11;
+class Mission
+{
+	addOns[]=
+	{
+		"cacharacters_e",
+		"caweapons_ammoboxes",
+		"takistan"
+	};
+	addOnsAuto[]=
+	{
+		"cacharacters_e",
+		"caweapons_ammoboxes",
+		"takistan"
+	};
+	randomSeed=4903908;
+	class Intel
+	{
+		startWeather=0.40000001;
+		forecastWeather=0.40000001;
+		year=2009;
+		day=28;
+		hour=16;
+		minute=20;
+	};
+	class Groups
+	{
+		items=1;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={8368.4629,296.04001,1965.2754};
+					azimut=-122.23126;
+					id=0;
+					side="WEST";
+					vehicle="US_Delta_Force_EP1";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+	};
+	class Vehicles
+	{
+		items=1;
+		class Item0
+		{
+			position[]={8331.1426,296.40723,1946.3577};
+			azimut=57.851501;
+			id=1;
+			side="EMPTY";
+			vehicle="RUBasicWeaponsBox";
+			skill=0.60000002;
+			init="_nil = [this] execVM ""JTK\suppressors\scripts\WeaponsCrate.sqf"";";
+		};
+	};
+	class Markers
+	{
+		items=1;
+		class Item0
+		{
+			position[]={8313.3047,296.04001,1939.0526};
+			name="range";
+			type="mil_arrow";
+			colorName="ColorBlack";
+			angle=-120.25524;
+		};
+	};
+	class Sensors
+	{
+		items=3;
+		class Item0
+		{
+			position[]={8346.8262,296.04001,2004.0793};
+			a=0;
+			b=0;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="(time > 1) AND  !(isClass(configFile>>""CfgPatches"">>""ace_main""))";
+			expActiv="JTK_Hints_Disabled = false;  JTK_SIL_KeyPressed = false;    JTK_Text = {   _unit = _this select 0;   _txt = """";   _str = ""<br/><t align='center'><t size='1.0'><t shadow='2'><t color='#E9DFA0'>Suppressor Conditions:</t>"";   _txt = _txt + _str;   _has_weap = true;   _BreakOut = false;      if ((!isNil ""JTK_Hints_Disable_Timer"") AND (time < JTK_Hints_Disable_Timer)) then {_BreakOut = true};   if ((!isNil ""JTK_Hints_Disable_Timer"") AND (time >= JTK_Hints_Disable_Timer)) then {    JTK_Hints_Disable_Timer = nil;     JTK_Can_Disable_Hints = true;    2 setRadiomsg ""'BRAVO': Disable hint text."";    _unit globalChat ""You can diasble the condtion hints via radio channel 'BRAVO'."";   };        _inProgress = (_unit getVariable ""Suppressor Status"");   if (!isNil ""_inProgress"") then {    if (((_unit getVariable ""Suppressor Status"") == ""In Progress"") AND (isNil ""JTK_Hints_Disable_Timer"")) then {     JTK_Hints_Disable_Timer = (time + 10);     _BreakOut = true;    };   };      if (_BreakOut) exitWith {};     _str = if (((primaryWeapon _unit) == """") AND !([_unit] call JTK_SIL_CheckIsPistol)) then {    _has_weap = false;    ""<br/><t color='#7D7D7D'><t align='left'><t size='0.8'>1. Have a suppressable weapon.</t><br/>"";    }else{    ""<br/><t color='#7EFF7E'><t align='left'><t size='0.8'>1. Have a suppressable weapon.</t><br/>"";   };   _txt = _txt + _str;      _str = if (speed _unit <= 0) then {    ""<br/><t color='#7EFF7E'><t size='0.8'>2. Remaing stationary.</t><br/>"";   }else{    ""<br/><t color='#7D7D7D'><t size='0.8'>2. Remaing stationary.</t><br/>"";   };   _txt = _txt + _str;      _str = if (JTK_SIL_KeyPressed) then {    ""<br/><t color='#7EFF7E'><t size='0.8'>3. Pressing the ''Left Windows'' key.</t><br/>"";   }else{    ""<br/><t color='#7D7D7D'><t size='0.8'>3. Pressing the ''Left Windows'' key.</t><br/>"";   };   _txt = _txt + _str;       hintSilent parseText _txt;  };    _nil = player spawn {   sleep 7;   While {!JTK_Hints_Disabled} do {    [player] call JTK_Text;    sleep 0.5;   };   hintSilent """";  };  ";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={8311.1201,296.07111,1987.8889};
+			a=0;
+			b=0;
+			interruptable=1;
+			age="UNKNOWN";
+			text="Spawn Target Range";
+			expCond="time > 1";
+			expActiv="_nil = [""range"",20,100] spawn {      if(!isserver) exitWith {};     JTK_Target_EH = {    _target = _this select 0;    _dammage = _this select 2;    _source = _this select 3;    _projectile = _this select 4;         if (local _source) then {     _buffer = if ((typeOf _target) ==  ""TargetEpopup"") then {140.65}else{1};     _dammage = (round((_dammage/_buffer)*100))/100;     _distance = round((_target distance _source)/5)*5;     HintSilent format[""Distance: %1m\nDammage: %2"",_distance,_dammage];     };   };       _pos = if(typeName(_this select 0) == ""OBJECT"") then {    position (_this select 0);   }else{    if(typeName(_this select 0) == ""STRING"") then {     markerPos (_this select 0);    }else{     ""NA"";    };   };       _dir = if(typeName(_this select 0) == ""OBJECT"") then {    direction (_this select 0);   }else{    if(typeName(_this select 0) == ""STRING"") then {     markerDir (_this select 0);    }else{     ""NA"";    };   };     _width = if (count _this > 1) then {_this select 1}else{15};   _range = if (count _this > 2) then {_this select 2}else{50};     if(typeName(_this select 0) == ""STRING"") then {(_this select 0) setMarkerType ""empty""};     _center = createVehicle [""Sign_sphere10cm_EP1"",_pos,[],_dir, ""CAN_COLLIDE""];   WaitUntil {!isNull _center};   _center setPos _pos;   _center setDir _dir;     _center setPos [getPos _center select 0,getPos _center select 1,0.35];   _center hideObject true;       _shootingPos = createVehicle [""Land_Shooting_range"",[0,0,0],[],_dir, ""CAN_COLLIDE""];   WaitUntil {!isNull _shootingPos};   _shootingPos setPos [(getPos _center select 0)+0.05,(getPos _center select 1),0];   _shootingPos setDir _dir;     _limit_Left = -(_width/2)+0.35;    _limit_Right = (_width/2)+0.35;        _z = -0.2;   _obj_size = 4;   _count = (_range/_obj_size)*3;   if (_count mod 2 != 0) then {_count = _count + 1};      _y_strt = 5;   _mltpr = 0;   _cnt = 0;   _dir_offset = (_dir - 90);   for ""_i"" from 1 to _count do {    _x = if (_i mod 2 == 0) then {_limit_Right}else{_limit_Left};    if (_cnt == 3) then {     _mltpr = _mltpr + 1;     _cnt = 0;    };    _y = _y_strt + (_mltpr*_obj_size);    _pos_offset = (_center modelToWorld [_x,_y,_z]);    _obj = createVehicle [""Land_HBarrier5"",_pos_offset,[],_dir_offset, ""CAN_COLLIDE""];    WaitUntil {!isNull _obj};     _obj setPos _pos_offset;    _obj setDir _dir_offset;    _cnt = _cnt + 1;     };     _z = 0;    _y = -0.4;   _mltpr = 0;   _dir_offset = (_dir - 90);   _obj_size = 0.5;     for ""_i"" from 1 to 2 do {    _x_strt = if (_i mod 2 == 0) then {0.35}else{-0.7};    _mltpr = if (_i mod 2 == 0) then {_mltpr}else{_mltpr+1};    _x = if (_i mod 2 == 0) then {_x_strt + (_mltpr*_obj_size)}else{_x_strt - (_mltpr*_obj_size)};    _pos_offset = (_shootingPos modelToWorld [_x,_y,_z]);    _obj = createVehicle [""Land_BagFenceLong"",_pos_offset,[],_dir_offset, ""CAN_COLLIDE""];    WaitUntil {!isNull _obj};    _obj setPos _pos_offset;    _obj setDir _dir_offset;    _mltpr = _mltpr+1;    };       _y = 1.0;   _mltpr = 0;   _dir_offset = _dir;   _obj_size = 2.85;   _count = ceil((_width/2)/_obj_size);   if (_count mod 2 != 0) then {_count = _count + 1};    _count = _count/2;   _x_strt = -_obj_size;     for ""_i"" from 1 to (_count + 1) do {    _x = _x_strt - (_mltpr*_obj_size);    _pos_offset = _center modelToWorld [_x,_y,_z];    _pos_offset = [_pos_offset select 0,_pos_offset select 1,(_shootingPos modelToWorld [_x,_y,_z]) select 2];    _obj = createVehicle [""Land_BagFenceLong"",_pos_offset,[],_dir_offset, ""CAN_COLLIDE""];    WaitUntil {!isNull _obj};    _obj setPos _pos_offset;    _obj setDir _dir_offset;    _mltpr = _mltpr+1;    };     _mltpr = 0;   _x_strt = _obj_size;   for ""_i"" from 1 to (_count + 1)  do {    _x = _x_strt + (_mltpr*_obj_size);    _pos_offset = _center modelToWorld [_x,_y,_z];    _pos_offset = [_pos_offset select 0,_pos_offset select 1,(_shootingPos modelToWorld [_x,_y,_z]) select 2];    _obj = createVehicle [""Land_BagFenceLong"",_pos_offset,[],_dir_offset, ""CAN_COLLIDE""];    WaitUntil {!isNull _obj};    _obj setPos _pos_offset;    _obj setDir _dir_offset;    _mltpr = _mltpr+1;    };       _mltpr = 0;   _dir_offset = _dir;   _obj_size = 5;   _y = _range + 15;     _count = ceil(_width/_obj_size);   for ""_i"" from 1 to _count do {    _x = _limit_Left + (_mltpr*_obj_size);    _pos_offset = _center modelToWorld [_x,_y,_z];    _obj = createVehicle [""Land_Dirthump01_EP1"",_pos_offset,[],_dir_offset, ""CAN_COLLIDE""];    WaitUntil {!isNull _obj};    _obj setPos _pos_offset;    _obj setDir _dir_offset;    _mltpr = _mltpr+1;    };     _inc = """";   if (_range <= 100) then {    _inc = 25;   }else{    if (_range > 100 AND _range <= 200)then{     _inc = 50;    }else{     if (_range > 200)then{      _inc = 100;     };    };   };       _count = ceil(_range/_inc);   _dir_offset = _dir;    _x = -9;   _y = 0;   for ""_i"" from 1 to _count do {    _x = (_x + 3);    _y = (_y + 25);    if (_y > _range) exitWith {};    _pos_offset = _shootingPos modelToWorld [_x,_y,0];    _obj = createVehicle [""TargetEpopup"",_pos_offset,[],_dir_offset, ""CAN_COLLIDE""];    WaitUntil {!isNull _obj};    _obj setPos _pos_offset;     _obj setDir _dir_offset;        _obj setVehicleInit ""this addeventHandler['HandleDamage','_this call JTK_Target_EH']"";    processInitCommands;   };  };";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={8380.2217,296.04001,2017.887};
+			a=0;
+			b=0;
+			activationBy="BRAVO";
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this AND  !(isClass(configFile>>""CfgPatches"">>""ace_main"")) AND JTK_Can_Disable_Hints";
+			expActiv="JTK_Hints_Disabled = true;";
+			class Effects
+			{
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"takistan"
+	};
+	addOnsAuto[]=
+	{
+		"takistan"
+	};
+	randomSeed=12290048;
+	class Intel
+	{
+		startWeather=0.40000001;
+		forecastWeather=0.40000001;
+		year=2009;
+		day=28;
+		hour=16;
+		minute=20;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"takistan"
+	};
+	addOnsAuto[]=
+	{
+		"takistan"
+	};
+	randomSeed=6351713;
+	class Intel
+	{
+		startWeather=0.40000001;
+		forecastWeather=0.40000001;
+		year=2009;
+		day=28;
+		hour=16;
+		minute=20;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"takistan"
+	};
+	addOnsAuto[]=
+	{
+		"takistan"
+	};
+	randomSeed=10311243;
+	class Intel
+	{
+		startWeather=0.40000001;
+		forecastWeather=0.40000001;
+		year=2009;
+		day=28;
+		hour=16;
+		minute=20;
+	};
+};

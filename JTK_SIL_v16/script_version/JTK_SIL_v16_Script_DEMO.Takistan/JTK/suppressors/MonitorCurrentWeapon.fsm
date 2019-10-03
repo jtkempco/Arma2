@@ -1,0 +1,283 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, JTK_HALOSetUpHint">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,4346,458.395569,-777.037964,548.395996,-727.037842,0.000000,"start"};
+item1[] = {"Ready_",4,218,614.045166,-712.463684,704.045166,-662.463684,0.000000,"Ready" \n ""};
+item2[] = {"empty",2,250,309.750763,-487.721710,399.750854,-437.721619,0.000000,"empty"};
+item3[] = {"Exit",1,250,458.278748,-974.685486,548.278809,-924.685547,0.000000,"Exit"};
+item4[] = {"Playable",4,218,178.899963,-487.495697,268.899902,-437.495941,0.000000,"Playable"};
+item5[] = {"Define_weap_",2,250,614.895935,-488.481903,704.895935,-438.481903,0.000000,"Define weap" \n ""};
+item6[] = {"weap_change_",4,218,616.036194,-414.754028,706.036194,-364.754028,0.000000,"" \n "weap change" \n ""};
+item7[] = {"__local",4,218,458.106415,-876.112549,548.106201,-826.112549,0.000000,"!local"};
+item8[] = {"check_weap___",2,250,616.068237,-331.314301,706.068054,-281.314331,0.000000,"check weap" \n " " \n ""};
+item9[] = {"alive",4,218,779.248657,-331.250092,869.248291,-281.250061,0.000000,"alive"};
+item10[] = {"killed",4,218,460.315735,-486.137573,550.315552,-436.137573,0.000000,"killed"};
+item11[] = {"__Playable",4,218,309.141907,-971.601990,399.141876,-921.601990,0.000000,"!Playable"};
+item12[] = {"Wait_til_alive",2,250,37.880436,-488.568085,127.880386,-438.568329,0.000000,"Wait til alive"};
+item13[] = {"Respawned",4,218,38.169968,-576.454956,128.169983,-526.454956,0.000000,"Respawned"};
+item14[] = {"Redefine",2,250,37.323845,-712.148010,127.323883,-662.148010,0.000000,"Redefine"};
+item15[] = {"",7,210,819.296448,-467.427551,827.296448,-459.427551,0.000000,""};
+item16[] = {"",7,210,501.216949,-309.621429,509.217041,-301.621460,0.000000,""};
+item17[] = {"initialize_",2,250,614.158691,-630.450195,704.158691,-580.450195,0.000000,"initialize" \n ""};
+item18[] = {"_",8,218,615.458923,-564.627441,705.458923,-514.627441,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,7};
+link2[] = {0,10};
+link3[] = {1,17};
+link4[] = {2,4};
+link5[] = {2,11};
+link6[] = {4,12};
+link7[] = {5,6};
+link8[] = {5,10};
+link9[] = {6,8};
+link10[] = {7,3};
+link11[] = {8,9};
+link12[] = {8,16};
+link13[] = {9,15};
+link14[] = {10,2};
+link15[] = {11,3};
+link16[] = {12,13};
+link17[] = {13,14};
+link18[] = {14,1};
+link19[] = {15,5};
+link20[] = {16,10};
+link21[] = {17,18};
+link22[] = {18,5};
+globals[] = {0.000000,0,0,0,0,640,480,1,225,6316128,1,-237.078659,1140.226440,-183.354782,-1061.000366,1381,880,1};
+window[] = {2,-1,-1,-32000,-32000,1044,180,1390,180,3,1403};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "JTK_HALOSetUpHint";
+  class States
+  {
+    /*%FSM<STATE "start">*/
+    class start
+    {
+      name = "start";
+      init = /*%FSM<STATEINIT""">*/"_unit = _this select 0;" \n
+       "" \n
+       "_isplayable =" \n
+       "	if(isMultiplayer) then{" \n
+       "		if(_unit in playableUnits) then{true} else{false};" \n
+       "	} else {false};" \n
+       "" \n
+       "		"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__local">*/
+        class __local
+        {
+          priority = 0.000000;
+          to="Exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!local _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "killed">*/
+        class killed
+        {
+          priority = 0.000000;
+          to="empty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Ready_">*/
+        class Ready_
+        {
+          priority = 0.000000;
+          to="initialize_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""JTK_Suppressors_Init_Done"") AND (currentWeapon _unit != """")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "empty">*/
+    class empty
+    {
+      name = "empty";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "__Playable">*/
+        class __Playable
+        {
+          priority = 0.000000;
+          to="Exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_isplayable)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Playable">*/
+        class Playable
+        {
+          priority = 0.000000;
+          to="Wait_til_alive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_isplayable"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Exit">*/
+    class Exit
+    {
+      name = "Exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Define_weap_">*/
+    class Define_weap_
+    {
+      name = "Define_weap_";
+      init = /*%FSM<STATEINIT""">*/"_weap = currentweapon _unit;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "killed">*/
+        class killed
+        {
+          priority = 0.000000;
+          to="empty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "weap_change_">*/
+        class weap_change_
+        {
+          priority = 0.000000;
+          to="check_weap___";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"currentweapon _unit != _weap"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "check_weap___">*/
+    class check_weap___
+    {
+      name = "check_weap___";
+      init = /*%FSM<STATEINIT""">*/"[_unit] spawn JTK_SIL_getActn" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "killed">*/
+        class killed
+        {
+          priority = 0.000000;
+          to="empty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "alive">*/
+        class alive
+        {
+          priority = 0.000000;
+          to="Define_weap_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(alive _unit) AND (primaryweapon _unit != """")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wait_til_alive">*/
+    class Wait_til_alive
+    {
+      name = "Wait_til_alive";
+      init = /*%FSM<STATEINIT""">*/"_name_unit = name _unit;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Respawned">*/
+        class Respawned
+        {
+          priority = 0.000000;
+          to="Redefine";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_name_unit == name _x} count playableUnits > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Redefine">*/
+    class Redefine
+    {
+      name = "Redefine";
+      init = /*%FSM<STATEINIT""">*/"{if(name _x == _name_unit) exitWith{_unit = _x}} foreach playableUnits;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready_">*/
+        class Ready_
+        {
+          priority = 0.000000;
+          to="initialize_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNil ""JTK_Suppressors_Init_Done"") AND (currentWeapon _unit != """")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "initialize_">*/
+    class initialize_
+    {
+      name = "initialize_";
+      init = /*%FSM<STATEINIT""">*/"[_unit] spawn JTK_SIL_getActn"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Define_weap_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="start";
+  finalStates[] =
+  {
+    "Exit",
+  };
+};
+/*%FSM</COMPILE>*/

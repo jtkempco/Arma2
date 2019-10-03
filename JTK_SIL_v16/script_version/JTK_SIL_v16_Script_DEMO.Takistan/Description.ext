@@ -1,0 +1,20 @@
+class Header
+{
+	gameType = Coop;
+	minPlayers = 1;
+	maxPlayers = 20;
+};
+
+respawn      = "BASE";
+respawndelay = 10;
+disabledAI   = 1;
+
+
+
+
+
+
+class CfgSounds {
+	#include "JTK\suppressors\CfgSounds.CPP"
+};
+	
