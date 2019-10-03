@@ -83,10 +83,3 @@ JTK_HALO_Capture = if (!isNil "JTK_HALO_Capture") then {JTK_HALO_Capture}else{_C
 JTK_HALO_ByPass  = if (!isNil "JTK_HALO_ByPass") then {JTK_HALO_ByPass}else{_ByPass};
 
 if (isserver) then {execVM "JTK\HALO\init_server.sqf"}else{execVM "JTK\HALO\init_client.sqf"};
-
-
-
-
-
-
-
