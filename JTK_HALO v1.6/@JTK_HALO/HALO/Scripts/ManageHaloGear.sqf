@@ -1,7 +1,7 @@
  //by Kempco
 
 /*
-	FUCK YOU! YOU FUCKING FUCK!!!!!!!!!!!!!!!!!!!!!!
+	WTF!!!! FUCK YOU! YOU FUCKING FUCK!!!!!!!!!!!!!!!!!!!!!!
 	
 	Lot of fucking around here to ensure that once the player gets his weapons back, a throwable exsplosive (if he has one) is NOT
 	set to his current weapon. NOT GOOD! First shot fired once primary is selected may be a grenade!!
