@@ -1,9 +1,7 @@
  //by Kempco
 
-/*
-	WTF!!!! FUCK YOU! YOU FUCKING FUCK!!!!!!!!!!!!!!!!!!!!!!
-	
-	Lot of fucking around here to ensure that once the player gets his weapons back, a throwable exsplosive (if he has one) is NOT
+/*	
+	Lot of screwing around here to ensure that once the player gets his weapons back, a throwable exsplosive (if he has one) is NOT
 	set to his current weapon. NOT GOOD! First shot fired once primary is selected may be a grenade!!
 
 	Priamary mags are tracked and one is added to player at 50m above the ground. This ensures that once 
