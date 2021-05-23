@@ -3,7 +3,7 @@
 	INPUT: NUMBER (i.e. Altitude)  
 	OUTPUT: TIME (in seconds)
 	
-	by Joe Kemp
+	by Kempco
 	
 	NOTE: - Gravitational constant = 2.95 NOT 9.8!!!
 		- 5.6 is the time it takes to reach terminal velocity.
