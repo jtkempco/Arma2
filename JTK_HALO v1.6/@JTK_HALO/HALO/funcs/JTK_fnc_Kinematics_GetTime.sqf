@@ -1,5 +1,5 @@
 /*
-	PUROPOSE: Returns the Time it will take for the unit to hit the ground from a given altitude. (Sir Isac Newton FTW!) 
+	PUROPOSE: Returns the Time it will take to reach the ground from a given altitude. (Sir Isac Newton FTW!) 
 	INPUT: NUMBER (i.e. Altitude)  
 	OUTPUT: TIME (in seconds)
 	
